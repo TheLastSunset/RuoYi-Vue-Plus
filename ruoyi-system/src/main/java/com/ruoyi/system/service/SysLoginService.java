@@ -74,12 +74,12 @@ public class SysLoginService {
         return StpUtil.getTokenValue();
     }
 
-    public String smsLogin(String phonenumber, String smsCode) {
+    public String smsLogin(String phoneNumber, String smsCode) {
         // 通过手机号查找用户
-        SysUser user = loadUserByPhonenumber(phonenumber);
+        SysUser user = loadUserByPhoneNumber(phoneNumber);
 
         HttpServletRequest request = ServletUtils.getRequest();
-        checkLogin(LoginType.SMS, user.getUserName(), () -> !validateSmsCode(phonenumber, smsCode));
+        checkLogin(LoginType.SMS, user.getUserName(), () -> !validateSmsCode(phoneNumber, smsCode));
         // 此处可根据登录用户的数据不同 自行创建 loginUser
         LoginUser loginUser = buildLoginUser(user);
         // 生成token
@@ -121,7 +121,7 @@ public class SysLoginService {
     /**
      * 校验短信验证码
      */
-    private boolean validateSmsCode(String phonenumber, String smsCode) {
+    private boolean validateSmsCode(String phoneNumber, String smsCode) {
         // todo 此处使用手机号查询redis验证码与参数验证码是否一致 用户自行实现
         return true;
     }
@@ -162,17 +162,17 @@ public class SysLoginService {
         return user;
     }
 
-    private SysUser loadUserByPhonenumber(String phonenumber) {
-        SysUser user = userService.selectUserByPhonenumber(phonenumber);
+    private SysUser loadUserByPhoneNumber(String phoneNumber) {
+        SysUser user = userService.selectUserByPhoneNumber(phoneNumber);
         if (ObjectUtil.isNull(user)) {
-            log.info("登录用户：{} 不存在.", phonenumber);
-            throw new UserException("user.not.exists", phonenumber);
+            log.info("登录用户：{} 不存在.", phoneNumber);
+            throw new UserException("user.not.exists", phoneNumber);
         } else if (UserStatus.DELETED.getCode().equals(user.getDelFlag())) {
-            log.info("登录用户：{} 已被删除.", phonenumber);
-            throw new UserException("user.password.delete", phonenumber);
+            log.info("登录用户：{} 已被删除.", phoneNumber);
+            throw new UserException("user.password.delete", phoneNumber);
         } else if (UserStatus.DISABLE.getCode().equals(user.getStatus())) {
-            log.info("登录用户：{} 已被停用.", phonenumber);
-            throw new UserException("user.blocked", phonenumber);
+            log.info("登录用户：{} 已被停用.", phoneNumber);
+            throw new UserException("user.blocked", phoneNumber);
         }
         return user;
     }

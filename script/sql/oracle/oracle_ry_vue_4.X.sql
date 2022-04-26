@@ -61,7 +61,7 @@ create table sys_user (
   nick_name         varchar2(40)    not null,
   user_type         varchar2(10)    default 'sys_user',
   email             varchar2(50)    default '',
-  phonenumber       varchar2(11)    default '',
+  phone_number       varchar2(11)    default '',
   sex               char(1)         default '0',
   avatar            varchar2(100)   default '',
   password          varchar2(100)   default '',
@@ -85,7 +85,7 @@ comment on column sys_user.user_name    is '用户账号';
 comment on column sys_user.nick_name    is '用户昵称';
 comment on column sys_user.user_type    is '用户类型（sys_user系统用户）';
 comment on column sys_user.email        is '用户邮箱';
-comment on column sys_user.phonenumber  is '手机号码';
+comment on column sys_user.phone_number  is '手机号码';
 comment on column sys_user.sex          is '用户性别（0男 1女 2未知）';
 comment on column sys_user.avatar       is '头像路径';
 comment on column sys_user.password     is '密码';

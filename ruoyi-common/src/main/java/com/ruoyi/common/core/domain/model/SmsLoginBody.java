@@ -19,9 +19,9 @@ public class SmsLoginBody {
     /**
      * 用户名
      */
-    @NotBlank(message = "{user.phonenumber.not.blank}")
+    @NotBlank(message = "{user.phoneNumber.not.blank}")
     @ApiModelProperty(value = "用户手机号")
-    private String phonenumber;
+    private String phoneNumber;
 
     /**
      * 用户密码

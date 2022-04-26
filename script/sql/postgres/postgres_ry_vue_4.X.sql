@@ -63,7 +63,7 @@ create table if not exists sys_user
     nick_name   varchar(30) not null,
     user_type   varchar(10)  default 'sys_user'::varchar,
     email       varchar(50)  default ''::varchar,
-    phonenumber varchar(11)  default ''::varchar,
+    phone_number varchar(11)  default ''::varchar,
     sex         char         default '0'::bpchar,
     avatar      varchar(100) default ''::varchar,
     password    varchar(100) default ''::varchar,
@@ -86,7 +86,7 @@ comment on column sys_user.user_name is '用户账号';
 comment on column sys_user.nick_name is '用户昵称';
 comment on column sys_user.user_type is '用户类型（sys_user系统用户）';
 comment on column sys_user.email is '用户邮箱';
-comment on column sys_user.phonenumber is '手机号码';
+comment on column sys_user.phone_number is '手机号码';
 comment on column sys_user.sex is '用户性别（0男 1女 2未知）';
 comment on column sys_user.avatar is '头像地址';
 comment on column sys_user.password is '密码';

@@ -46,7 +46,7 @@ create table sys_user (
   nick_name         varchar(30)     not null                   comment '用户昵称',
   user_type         varchar(10)     default 'sys_user'         comment '用户类型（sys_user系统用户）',
   email             varchar(50)     default ''                 comment '用户邮箱',
-  phonenumber       varchar(11)     default ''                 comment '手机号码',
+  phone_number       varchar(11)     default ''                 comment '手机号码',
   sex               char(1)         default '0'                comment '用户性别（0男 1女 2未知）',
   avatar            varchar(100)    default ''                 comment '头像地址',
   password          varchar(100)    default ''                 comment '密码',
@@ -429,7 +429,7 @@ create table sys_operation_log
     status             int(1) default 0 comment '操作状态（0正常 1异常）',
     error_msg          varchar(2000) default '' comment '错误消息',
     operation_time     datetime comment '操作时间',
-    primary key (operation_id)
+    primary key (id)
 ) engine=innodb comment = '操作日志记录';
 
 

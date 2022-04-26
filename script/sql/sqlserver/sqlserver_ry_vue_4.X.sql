@@ -1886,7 +1886,7 @@ CREATE TABLE [sys_user]
     [nick_name]   nvarchar(30)                       NOT NULL,
     [user_type]   nvarchar(10)  DEFAULT ('sys_user') NULL,
     [email]       nvarchar(50)  DEFAULT ''           NULL,
-    [phonenumber] nvarchar(11)  DEFAULT ''           NULL,
+    [phone_number] nvarchar(11)  DEFAULT ''           NULL,
     [sex]         nchar(1)      DEFAULT ('0')        NULL,
     [avatar]      nvarchar(100) DEFAULT ''           NULL,
     [password]    nvarchar(100) DEFAULT ''           NULL,
@@ -1946,7 +1946,7 @@ EXEC sys.sp_addextendedproperty
     'MS_Description', N'手机号码' ,
     'SCHEMA', N'dbo',
     'TABLE', N'sys_user',
-    'COLUMN', N'phonenumber'
+    'COLUMN', N'phone_number'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'用户性别（0男 1女 2未知）' ,
@@ -2026,9 +2026,9 @@ EXEC sys.sp_addextendedproperty
     'TABLE', N'sys_user'
 GO
 
-INSERT [sys_user] ([user_id], [dept_id], [user_name], [nick_name], [user_type], [email], [phonenumber], [sex], [avatar], [password], [status], [del_flag], [login_ip], [login_date], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, 103, N'admin', N'疯狂的狮子Li', N'sys_user', N'crazyLionLi@163.com', N'15888888888', N'1', N'', N'$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', N'0', N'0', N'127.0.0.1', getdate(), N'admin', getdate(), N'', getdate(), N'管理员')
+INSERT [sys_user] ([user_id], [dept_id], [user_name], [nick_name], [user_type], [email], [phone_number], [sex], [avatar], [password], [status], [del_flag], [login_ip], [login_date], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, 103, N'admin', N'疯狂的狮子Li', N'sys_user', N'crazyLionLi@163.com', N'15888888888', N'1', N'', N'$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', N'0', N'0', N'127.0.0.1', getdate(), N'admin', getdate(), N'', getdate(), N'管理员')
 GO
-INSERT [sys_user] ([user_id], [dept_id], [user_name], [nick_name], [user_type], [email], [phonenumber], [sex], [avatar], [password], [status], [del_flag], [login_ip], [login_date], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, 105, N'ry', N'疯狂的狮子Li', N'sys_user', N'crazyLionLi@qq.com', N'15666666666', N'1', N'', N'$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', N'0', N'0', N'127.0.0.1', getdate(), N'admin', getdate(), N'admin', getdate(), N'测试员')
+INSERT [sys_user] ([user_id], [dept_id], [user_name], [nick_name], [user_type], [email], [phone_number], [sex], [avatar], [password], [status], [del_flag], [login_ip], [login_date], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, 105, N'ry', N'疯狂的狮子Li', N'sys_user', N'crazyLionLi@qq.com', N'15666666666', N'1', N'', N'$2a$10$7JB720yubVSZvUI0rEqK/.VqGOZTH.ulu33dHOiBE8ByOhJIrdAu2', N'0', N'0', N'127.0.0.1', getdate(), N'admin', getdate(), N'admin', getdate(), N'测试员')
 GO
 
 CREATE TABLE [sys_user_post]
