@@ -246,9 +246,9 @@ GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1511, N'测试树表导出', 1506, 5, N'#', N'', 1, 0, N'F', N'0', N'0', N'demo:tree:export', N'#', N'admin', getdate(), N'', NULL, N'');
 GO
 
-INSERT [sys_role] ([role_id], [role_name], [role_key], [role_sort], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (3, N'本部门及以下', N'test1', 3, N'4', 1, 1, N'0', N'0', N'admin', getdate(), N'admin', NULL, NULL);
+INSERT [sys_role] ([role_id], [role_name], [role_key], [order_num], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (3, N'本部门及以下', N'test1', 3, N'4', 1, 1, N'0', N'0', N'admin', getdate(), N'admin', NULL, NULL);
 GO
-INSERT [sys_role] ([role_id], [role_name], [role_key], [role_sort], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (4, N'仅本人', N'test2', 4, N'5', 1, 1, N'0', N'0', N'admin', getdate(), N'admin', NULL, NULL);
+INSERT [sys_role] ([role_id], [role_name], [role_key], [order_num], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (4, N'仅本人', N'test2', 4, N'5', 1, 1, N'0', N'0', N'admin', getdate(), N'admin', NULL, NULL);
 GO
 
 INSERT [sys_role_menu] ([role_id], [menu_id]) VALUES (3, 1);

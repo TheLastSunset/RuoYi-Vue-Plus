@@ -116,7 +116,7 @@ create table if not exists sys_post
     post_id     int8,
     post_code   varchar(64) not null,
     post_name   varchar(50) not null,
-    post_sort   int4        not null,
+    order_num   int4        not null,
     status      char        not null,
     create_by   varchar(64)  default ''::varchar,
     create_time timestamp,
@@ -130,7 +130,7 @@ comment on table sys_post is '岗位信息表';
 comment on column sys_post.post_id is '岗位ID';
 comment on column sys_post.post_code is '岗位编码';
 comment on column sys_post.post_name is '岗位名称';
-comment on column sys_post.post_sort is '显示顺序';
+comment on column sys_post.order_num is '显示顺序';
 comment on column sys_post.status is '状态（0正常 1停用）';
 comment on column sys_post.create_by is '创建者';
 comment on column sys_post.create_time is '创建时间';
@@ -155,7 +155,7 @@ create table if not exists sys_role
     role_id             int8,
     role_name           varchar(30)  not null,
     role_key            varchar(100) not null,
-    role_sort           int4         not null,
+    order_num           int4         not null,
     data_scope          char         default '1'::bpchar,
     menu_check_strictly bool         default true,
     dept_check_strictly bool         default true,
@@ -173,7 +173,7 @@ comment on table sys_role is '角色信息表';
 comment on column sys_role.role_id is '角色ID';
 comment on column sys_role.role_name is '角色名称';
 comment on column sys_role.role_key is '角色权限字符串';
-comment on column sys_role.role_sort is '显示顺序';
+comment on column sys_role.order_num is '显示顺序';
 comment on column sys_role.data_scope is '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）';
 comment on column sys_role.menu_check_strictly is '菜单树选择项是否关联显示';
 comment on column sys_role.dept_check_strictly is '部门树选择项是否关联显示';
@@ -603,7 +603,7 @@ drop table if exists sys_dict_data;
 create table if not exists sys_dict_data
 (
     dict_code   int8,
-    dict_sort   int4         default 0,
+    order_num   int4         default 0,
     dict_label  varchar(100) default ''::varchar,
     dict_value  varchar(100) default ''::varchar,
     dict_type   varchar(100) default ''::varchar,
@@ -621,7 +621,7 @@ create table if not exists sys_dict_data
 
 comment on table sys_dict_data is '字典数据表';
 comment on column sys_dict_data.dict_code is '字典编码';
-comment on column sys_dict_data.dict_sort is '字典排序';
+comment on column sys_dict_data.order_num is '字典排序';
 comment on column sys_dict_data.dict_label is '字典标签';
 comment on column sys_dict_data.dict_value is '字典键值';
 comment on column sys_dict_data.dict_type is '字典类型';

@@ -100,7 +100,7 @@
         </template>
       </el-table-column>
       <el-table-column label="字典键值" align="center" prop="dictValue" />
-      <el-table-column label="字典排序" align="center" prop="dictSort" />
+      <el-table-column label="字典排序" align="center" prop="orderNum" />
       <el-table-column label="状态" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
@@ -155,8 +155,8 @@
         <el-form-item label="样式属性" prop="cssClass">
           <el-input v-model="form.cssClass" placeholder="请输入样式属性" />
         </el-form-item>
-        <el-form-item label="显示排序" prop="dictSort">
-          <el-input-number v-model="form.dictSort" controls-position="right" :min="0" />
+        <el-form-item label="显示排序" prop="orderNum">
+          <el-input-number v-model="form.orderNum" controls-position="right" :min="0" />
         </el-form-item>
         <el-form-item label="回显样式" prop="listClass">
           <el-select v-model="form.listClass">
@@ -265,7 +265,7 @@ export default {
         dictValue: [
           { required: true, message: "数据键值不能为空", trigger: "blur" }
         ],
-        dictSort: [
+        orderNum: [
           { required: true, message: "数据顺序不能为空", trigger: "blur" }
         ]
       }
@@ -313,7 +313,7 @@ export default {
         dictValue: undefined,
         cssClass: undefined,
         listClass: 'default',
-        dictSort: 0,
+        orderNum: 0,
         status: "0",
         remark: undefined
       };

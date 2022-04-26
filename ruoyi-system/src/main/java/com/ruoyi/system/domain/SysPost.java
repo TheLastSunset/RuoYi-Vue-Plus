@@ -62,7 +62,7 @@ public class SysPost extends BaseEntity {
     @ApiModelProperty(value = "岗位排序")
     @ExcelProperty(value = "岗位排序")
     @NotNull(message = "显示顺序不能为空")
-    private Integer postSort;
+    private Integer orderNum;
 
     /**
      * 状态（0正常 1停用）

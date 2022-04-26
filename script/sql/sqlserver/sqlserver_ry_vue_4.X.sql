@@ -558,7 +558,7 @@ GO
 CREATE TABLE [sys_dict_data]
 (
     [dict_code]   bigint                      NOT NULL,
-    [dict_sort]   int           DEFAULT ((0)) NULL,
+    [order_num]   int           DEFAULT ((0)) NULL,
     [dict_label]  nvarchar(100) DEFAULT ''    NULL,
     [dict_value]  nvarchar(100) DEFAULT ''    NULL,
     [dict_type]   nvarchar(100) DEFAULT ''    NULL,
@@ -588,7 +588,7 @@ EXEC sys.sp_addextendedproperty
     'MS_Description', N'字典排序' ,
     'SCHEMA', N'dbo',
     'TABLE', N'sys_dict_data',
-    'COLUMN', N'dict_sort'
+    'COLUMN', N'order_num'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'字典标签' ,
@@ -668,61 +668,61 @@ EXEC sys.sp_addextendedproperty
     'TABLE', N'sys_dict_data'
 GO
 
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, 1, N'男', N'0', N'sys_user_sex', N'', N'', N'Y', N'0', N'admin', getdate(), N'', NULL, N'性别男')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, 1, N'男', N'0', N'sys_user_sex', N'', N'', N'Y', N'0', N'admin', getdate(), N'', NULL, N'性别男')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, 2, N'女', N'1', N'sys_user_sex', N'', N'', N'N', N'0', N'admin', getdate(), N'', NULL, N'性别女')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, 2, N'女', N'1', N'sys_user_sex', N'', N'', N'N', N'0', N'admin', getdate(), N'', NULL, N'性别女')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (3, 3, N'未知', N'2', N'sys_user_sex', N'', N'', N'N', N'0', N'admin', getdate(), N'', NULL, N'性别未知')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (3, 3, N'未知', N'2', N'sys_user_sex', N'', N'', N'N', N'0', N'admin', getdate(), N'', NULL, N'性别未知')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (4, 1, N'显示', N'0', N'sys_show_hide', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'显示菜单')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (4, 1, N'显示', N'0', N'sys_show_hide', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'显示菜单')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (5, 2, N'隐藏', N'1', N'sys_show_hide', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'隐藏菜单')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (5, 2, N'隐藏', N'1', N'sys_show_hide', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'隐藏菜单')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (6, 1, N'正常', N'0', N'sys_normal_disable', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (6, 1, N'正常', N'0', N'sys_normal_disable', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (7, 2, N'停用', N'1', N'sys_normal_disable', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'停用状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (7, 2, N'停用', N'1', N'sys_normal_disable', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'停用状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (8, 1, N'正常', N'0', N'sys_job_status', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (8, 1, N'正常', N'0', N'sys_job_status', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (9, 2, N'暂停', N'1', N'sys_job_status', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'停用状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (9, 2, N'暂停', N'1', N'sys_job_status', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'停用状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (10, 1, N'默认', N'DEFAULT', N'sys_job_group', N'', N'', N'Y', N'0', N'admin', getdate(), N'', NULL, N'默认分组')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (10, 1, N'默认', N'DEFAULT', N'sys_job_group', N'', N'', N'Y', N'0', N'admin', getdate(), N'', NULL, N'默认分组')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (11, 2, N'系统', N'SYSTEM', N'sys_job_group', N'', N'', N'N', N'0', N'admin', getdate(), N'', NULL, N'系统分组')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (11, 2, N'系统', N'SYSTEM', N'sys_job_group', N'', N'', N'N', N'0', N'admin', getdate(), N'', NULL, N'系统分组')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (12, 1, N'是', N'Y', N'sys_yes_no', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'系统默认是')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (12, 1, N'是', N'Y', N'sys_yes_no', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'系统默认是')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (13, 2, N'否', N'N', N'sys_yes_no', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'系统默认否')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (13, 2, N'否', N'N', N'sys_yes_no', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'系统默认否')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (14, 1, N'通知', N'1', N'sys_notice_type', N'', N'warning', N'Y', N'0', N'admin', getdate(), N'', NULL, N'通知')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (14, 1, N'通知', N'1', N'sys_notice_type', N'', N'warning', N'Y', N'0', N'admin', getdate(), N'', NULL, N'通知')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (15, 2, N'公告', N'2', N'sys_notice_type', N'', N'success', N'N', N'0', N'admin', getdate(), N'', NULL, N'公告')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (15, 2, N'公告', N'2', N'sys_notice_type', N'', N'success', N'N', N'0', N'admin', getdate(), N'', NULL, N'公告')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (16, 1, N'正常', N'0', N'sys_notice_status', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (16, 1, N'正常', N'0', N'sys_notice_status', N'', N'primary', N'Y', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (17, 2, N'关闭', N'1', N'sys_notice_status', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'关闭状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (17, 2, N'关闭', N'1', N'sys_notice_status', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'关闭状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (18, 1, N'新增', N'1', N'sys_operation_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'新增操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (18, 1, N'新增', N'1', N'sys_operation_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'新增操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (19, 2, N'修改', N'2', N'sys_operation_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'修改操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (19, 2, N'修改', N'2', N'sys_operation_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'修改操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (20, 3, N'删除', N'3', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'删除操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (20, 3, N'删除', N'3', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'删除操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (21, 4, N'授权', N'4', N'sys_operation_type', N'', N'primary', N'N', N'0', N'admin', getdate(), N'', NULL, N'授权操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (21, 4, N'授权', N'4', N'sys_operation_type', N'', N'primary', N'N', N'0', N'admin', getdate(), N'', NULL, N'授权操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (22, 5, N'导出', N'5', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导出操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (22, 5, N'导出', N'5', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导出操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (23, 6, N'导入', N'6', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导入操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (23, 6, N'导入', N'6', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导入操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (24, 7, N'强退', N'7', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'强退操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (24, 7, N'强退', N'7', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'强退操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (25, 8, N'生成代码', N'8', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'生成操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (25, 8, N'生成代码', N'8', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'生成操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (26, 9, N'清空数据', N'9', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'清空操作')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (26, 9, N'清空数据', N'9', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'清空操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (27, 1, N'成功', N'0', N'sys_common_status', N'', N'primary', N'N', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (27, 1, N'成功', N'0', N'sys_common_status', N'', N'primary', N'N', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (28, 2, N'失败', N'1', N'sys_common_status', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'停用状态')
+INSERT [sys_dict_data] ([dict_code], [order_num], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (28, 2, N'失败', N'1', N'sys_common_status', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'停用状态')
 GO
 
 CREATE TABLE [sys_dict_type]
@@ -1441,7 +1441,7 @@ CREATE TABLE [sys_post]
     [post_id]     bigint                  NOT NULL,
     [post_code]   nvarchar(64)            NOT NULL,
     [post_name]   nvarchar(50)            NOT NULL,
-    [post_sort]   int                     NOT NULL,
+    [order_num]   int                     NOT NULL,
     [status]      nchar(1)                NOT NULL,
     [create_by]   nvarchar(64) DEFAULT '' NULL,
     [create_time] datetime2(7)            NULL,
@@ -1477,7 +1477,7 @@ EXEC sys.sp_addextendedproperty
     'MS_Description', N'显示顺序' ,
     'SCHEMA', N'dbo',
     'TABLE', N'sys_post',
-    'COLUMN', N'post_sort'
+    'COLUMN', N'order_num'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'状态（0正常 1停用）' ,
@@ -1521,13 +1521,13 @@ EXEC sys.sp_addextendedproperty
     'TABLE', N'sys_post'
 GO
 
-INSERT [sys_post] ([post_id], [post_code], [post_name], [post_sort], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, N'ceo', N'董事长', 1, N'0', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_post] ([post_id], [post_code], [post_name], [order_num], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, N'ceo', N'董事长', 1, N'0', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_post] ([post_id], [post_code], [post_name], [post_sort], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, N'se', N'项目经理', 2, N'0', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_post] ([post_id], [post_code], [post_name], [order_num], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, N'se', N'项目经理', 2, N'0', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_post] ([post_id], [post_code], [post_name], [post_sort], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (3, N'hr', N'人力资源', 3, N'0', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_post] ([post_id], [post_code], [post_name], [order_num], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (3, N'hr', N'人力资源', 3, N'0', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_post] ([post_id], [post_code], [post_name], [post_sort], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (4, N'user', N'普通员工', 4, N'0', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_post] ([post_id], [post_code], [post_name], [order_num], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (4, N'user', N'普通员工', 4, N'0', N'admin', getdate(), N'', NULL, N'')
 GO
 
 CREATE TABLE [sys_role]
@@ -1535,7 +1535,7 @@ CREATE TABLE [sys_role]
     [role_id]             bigint                     NOT NULL,
     [role_name]           nvarchar(30)               NOT NULL,
     [role_key]            nvarchar(100)              NOT NULL,
-    [role_sort]           int                        NOT NULL,
+    [order_num]           int                        NOT NULL,
     [data_scope]          nchar(1)     DEFAULT ('1') NULL,
     [menu_check_strictly] tinyint      DEFAULT ((1)) NULL,
     [dept_check_strictly] tinyint      DEFAULT ((1)) NULL,
@@ -1575,7 +1575,7 @@ EXEC sys.sp_addextendedproperty
     'MS_Description', N'显示顺序' ,
     'SCHEMA', N'dbo',
     'TABLE', N'sys_role',
-    'COLUMN', N'role_sort'
+    'COLUMN', N'order_num'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）' ,
@@ -1643,9 +1643,9 @@ EXEC sys.sp_addextendedproperty
     'TABLE', N'sys_role'
 GO
 
-INSERT [sys_role] ([role_id], [role_name], [role_key], [role_sort], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, N'超级管理员', N'admin', 1, N'1', 1, 1, N'0', N'0', N'admin', getdate(), N'', NULL, N'超级管理员')
+INSERT [sys_role] ([role_id], [role_name], [role_key], [order_num], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1, N'超级管理员', N'admin', 1, N'1', 1, 1, N'0', N'0', N'admin', getdate(), N'', NULL, N'超级管理员')
 GO
-INSERT [sys_role] ([role_id], [role_name], [role_key], [role_sort], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, N'普通角色', N'common', 2, N'2', 1, 1, N'0', N'0', N'admin', getdate(), N'admin', CAST(N'2021-12-04T15:44:20.0000000' AS DateTime2), N'普通角色')
+INSERT [sys_role] ([role_id], [role_name], [role_key], [order_num], [data_scope], [menu_check_strictly], [dept_check_strictly], [status], [del_flag], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, N'普通角色', N'common', 2, N'2', 1, 1, N'0', N'0', N'admin', getdate(), N'admin', CAST(N'2021-12-04T15:44:20.0000000' AS DateTime2), N'普通角色')
 GO
 
 CREATE TABLE [sys_role_dept]

@@ -84,7 +84,7 @@
       <el-table-column label="岗位编号" align="center" prop="postId" />
       <el-table-column label="岗位编码" align="center" prop="postCode" />
       <el-table-column label="岗位名称" align="center" prop="postName" />
-      <el-table-column label="岗位排序" align="center" prop="postSort" />
+      <el-table-column label="岗位排序" align="center" prop="orderNum" />
       <el-table-column label="状态" align="center" prop="status">
         <template slot-scope="scope">
           <dict-tag :options="dict.type.sys_normal_disable" :value="scope.row.status"/>
@@ -132,8 +132,8 @@
         <el-form-item label="岗位编码" prop="postCode">
           <el-input v-model="form.postCode" placeholder="请输入编码名称" />
         </el-form-item>
-        <el-form-item label="岗位顺序" prop="postSort">
-          <el-input-number v-model="form.postSort" controls-position="right" :min="0" />
+        <el-form-item label="岗位顺序" prop="orderNum">
+          <el-input-number v-model="form.orderNum" controls-position="right" :min="0" />
         </el-form-item>
         <el-form-item label="岗位状态" prop="status">
           <el-radio-group v-model="form.status">
@@ -200,7 +200,7 @@ export default {
         postCode: [
           { required: true, message: "岗位编码不能为空", trigger: "blur" }
         ],
-        postSort: [
+        orderNum: [
           { required: true, message: "岗位顺序不能为空", trigger: "blur" }
         ]
       }
@@ -230,7 +230,7 @@ export default {
         postId: undefined,
         postCode: undefined,
         postName: undefined,
-        postSort: 0,
+        orderNum: 0,
         status: "0",
         remark: undefined
       };

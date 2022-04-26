@@ -42,7 +42,7 @@
         <id property="roleId" column="role_id"/>
         <result property="roleName" column="role_name"/>
         <result property="roleKey" column="role_key"/>
-        <result property="roleSort" column="role_sort"/>
+        <result property="orderNum" column="order_num"/>
         <result property="dataScope" column="data_scope"/>
         <result property="status" column="role_status"/>
     </resultMap>
@@ -75,7 +75,7 @@
                r.role_id,
                r.role_name,
                r.role_key,
-               r.role_sort,
+               r.order_num,
                r.data_scope,
                r.status as role_status
         from sys_user u

@@ -121,7 +121,7 @@ public class GenTableColumn extends BaseEntity {
     /**
      * 排序
      */
-    private Integer sort;
+    private Integer orderNum;
 
     public String getCapJavaField() {
         return StringUtils.uncapitalize(javaField);

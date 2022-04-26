@@ -4,11 +4,11 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="com.ruoyi.system.mapper.SysRoleMapper">
 
-    <resultMap type="SysRole" id="SysRoleResult">
+    <resultMap type="com.ruoyi.common.core.domain.entity.SysRole" id="BaseResultMap">
         <id property="roleId" column="role_id"/>
         <result property="roleName" column="role_name"/>
         <result property="roleKey" column="role_key"/>
-        <result property="roleSort" column="role_sort"/>
+        <result property="orderNum" column="order_num"/>
         <result property="dataScope" column="data_scope"/>
         <result property="menuCheckStrictly" column="menu_check_strictly"/>
         <result property="deptCheckStrictly" column="dept_check_strictly"/>
@@ -25,7 +25,7 @@
         select distinct r.role_id,
                         r.role_name,
                         r.role_key,
-                        r.role_sort,
+                        r.order_num,
                         r.data_scope,
                         r.menu_check_strictly,
                         r.dept_check_strictly,
@@ -39,17 +39,17 @@
                  left join sys_dept d on u.dept_id = d.dept_id
     </sql>
 
-    <select id="selectPageRoleList" resultMap="SysRoleResult">
+    <select id="selectPageRoleList" resultMap="BaseResultMap">
         <include refid="selectRoleVo"/>
         ${ew.getCustomSqlSegment}
     </select>
 
-    <select id="selectRoleList" resultMap="SysRoleResult">
+    <select id="selectRoleList" resultMap="BaseResultMap">
         <include refid="selectRoleVo"/>
         ${ew.getCustomSqlSegment}
     </select>
 
-    <select id="selectRolePermissionByUserId" parameterType="Long" resultMap="SysRoleResult">
+    <select id="selectRolePermissionByUserId" parameterType="Long" resultMap="BaseResultMap">
         <include refid="selectRoleVo"/>
         WHERE r.del_flag = '0' and ur.user_id = #{userId}
     </select>
@@ -62,7 +62,7 @@
         where u.user_id = #{userId}
     </select>
 
-    <select id="selectRolesByUserName" parameterType="String" resultMap="SysRoleResult">
+    <select id="selectRolesByUserName" parameterType="String" resultMap="BaseResultMap">
         <include refid="selectRoleVo"/>
         WHERE r.del_flag = '0' and u.user_name = #{userName}
     </select>

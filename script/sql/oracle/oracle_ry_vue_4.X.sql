@@ -113,7 +113,7 @@ create table sys_post (
   post_id           number(20)      not null,
   post_code         varchar2(64)    not null,
   post_name         varchar2(50)    not null,
-  post_sort         number(4)       not null,
+  order_num         number(4)       not null,
   status            char(1)         not null,
   create_by         varchar2(64)    default '',
   create_time       date,
@@ -128,7 +128,7 @@ comment on table  sys_post              is '岗位信息表';
 comment on column sys_post.post_id      is '岗位ID';
 comment on column sys_post.post_code    is '岗位编码';
 comment on column sys_post.post_name    is '岗位名称';
-comment on column sys_post.post_sort    is '显示顺序';
+comment on column sys_post.order_num    is '显示顺序';
 comment on column sys_post.status       is '状态（0正常 1停用）';
 comment on column sys_post.create_by    is '创建者';
 comment on column sys_post.create_time  is '创建时间';
@@ -152,7 +152,7 @@ create table sys_role (
   role_id              number(20)      not null,
   role_name            varchar2(30)    not null,
   role_key             varchar2(100)   not null,
-  role_sort            number(4)       not null,
+  order_num            number(4)       not null,
   data_scope           char(1)         default '1',
   menu_check_strictly  number(1)       default 1,
   dept_check_strictly  number(1)       default 1,
@@ -171,7 +171,7 @@ comment on table  sys_role                       is '角色信息表';
 comment on column sys_role.role_id               is '角色ID';
 comment on column sys_role.role_name             is '角色名称';
 comment on column sys_role.role_key              is '角色权限字符串';
-comment on column sys_role.role_sort             is '显示顺序';
+comment on column sys_role.order_num             is '显示顺序';
 comment on column sys_role.data_scope            is '数据范围（1：全部数据权限 2：自定数据权限 3：本部门数据权限 4：本部门及以下数据权限）';
 comment on column sys_role.menu_check_strictly   is '菜单树选择项是否关联显示';
 comment on column sys_role.dept_check_strictly   is '部门树选择项是否关联显示';
@@ -595,7 +595,7 @@ insert into sys_dict_type values(10, '系统状态', 'sys_common_status',   '0',
 -- ----------------------------
 create table sys_dict_data (
   dict_code        number(20)      not null,
-  dict_sort        number(4)       default 0,
+  order_num        number(4)       default 0,
   dict_label       varchar2(100)   default '',
   dict_value       varchar2(100)   default '',
   dict_type        varchar2(100)   default '',
@@ -614,7 +614,7 @@ alter table sys_dict_data add constraint pk_sys_dict_data primary key (dict_code
 
 comment on table  sys_dict_data               is '字典数据表';
 comment on column sys_dict_data.dict_code     is '字典主键';
-comment on column sys_dict_data.dict_sort     is '字典排序';
+comment on column sys_dict_data.order_num     is '字典排序';
 comment on column sys_dict_data.dict_label    is '字典标签';
 comment on column sys_dict_data.dict_value    is '字典键值';
 comment on column sys_dict_data.dict_type     is '字典类型';

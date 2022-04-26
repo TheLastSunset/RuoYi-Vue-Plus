@@ -148,8 +148,8 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService, DictService 
         dictDataMap.forEach((k,v) -> {
             String dictKey = getCacheKey(k);
             List<SysDictData> dictList = v.stream()
-                .sorted(Comparator.comparing(SysDictData::getDictSort))
-                .collect(Collectors.toList());
+                .sorted(Comparator.comparing(SysDictData::getOrderNum))
+                .toList();
             RedisUtils.setCacheObject(dictKey, dictList);
         });
     }

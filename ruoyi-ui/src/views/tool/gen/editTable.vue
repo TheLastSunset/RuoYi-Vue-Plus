@@ -225,7 +225,7 @@ export default {
         const targetRow = this.columns.splice(evt.oldIndex, 1)[0];
         this.columns.splice(evt.newIndex, 0, targetRow);
         for (let index in this.columns) {
-          this.columns[index].sort = parseInt(index) + 1;
+          this.columns[index].orderNum = parseInt(index) + 1;
         }
       }
     });

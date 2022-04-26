@@ -32,7 +32,7 @@ public class SysDictDataServiceImpl implements ISysDictDataService {
             .eq(StringUtils.isNotBlank(dictData.getDictType()), SysDictData::getDictType, dictData.getDictType())
             .like(StringUtils.isNotBlank(dictData.getDictLabel()), SysDictData::getDictLabel, dictData.getDictLabel())
             .eq(StringUtils.isNotBlank(dictData.getStatus()), SysDictData::getStatus, dictData.getStatus())
-            .orderByAsc(SysDictData::getDictSort);
+            .orderByAsc(SysDictData::getOrderNum);
         Page<SysDictData> page = baseMapper.selectPage(pageQuery.build(), lqw);
         return TableDataInfo.build(page);
     }
@@ -49,7 +49,7 @@ public class SysDictDataServiceImpl implements ISysDictDataService {
             .eq(StringUtils.isNotBlank(dictData.getDictType()), SysDictData::getDictType, dictData.getDictType())
             .like(StringUtils.isNotBlank(dictData.getDictLabel()), SysDictData::getDictLabel, dictData.getDictLabel())
             .eq(StringUtils.isNotBlank(dictData.getStatus()), SysDictData::getStatus, dictData.getStatus())
-            .orderByAsc(SysDictData::getDictSort));
+            .orderByAsc(SysDictData::getOrderNum));
     }
 
     /**
