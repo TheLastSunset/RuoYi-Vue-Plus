@@ -28,7 +28,7 @@ public interface OssConstant {
     /**
      * 预览列表资源开关Key
      */
-    String PEREVIEW_LIST_RESOURCE_KEY = "sys.oss.previewListResource";
+    String PREVIEW_LIST_RESOURCE_KEY = "sys.oss.previewListResource";
 
     /**
      * 系统数据ids
