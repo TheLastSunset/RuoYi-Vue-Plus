@@ -8,8 +8,8 @@ import com.ruoyi.common.core.domain.PageQuery;
 import com.ruoyi.common.core.page.TableDataInfo;
 import com.ruoyi.common.enums.BusinessType;
 import com.ruoyi.common.utils.poi.ExcelUtil;
-import com.ruoyi.system.domain.SysOperLog;
-import com.ruoyi.system.service.ISysOperLogService;
+import com.ruoyi.system.domain.SysOperationLog;
+import com.ruoyi.system.service.ISysOperationLogService;
 import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import lombok.RequiredArgsConstructor;
@@ -28,41 +28,41 @@ import java.util.List;
 @Api(value = "操作日志记录", tags = {"操作日志记录管理"})
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/monitor/operlog")
-public class SysOperlogController extends BaseController {
+@RequestMapping("/monitor/operationLog")
+public class SysOperationLogController extends BaseController {
 
-    private final ISysOperLogService operLogService;
+    private final ISysOperationLogService operationLogService;
 
     @ApiOperation("查询操作日志记录列表")
-    @SaCheckPermission("monitor:operlog:list")
+    @SaCheckPermission("monitor:operationLog:list")
     @GetMapping("/list")
-    public TableDataInfo<SysOperLog> list(SysOperLog operLog, PageQuery pageQuery) {
-        return operLogService.selectPageOperLogList(operLog, pageQuery);
+    public TableDataInfo<SysOperationLog> list(SysOperationLog entity, PageQuery pageQuery) {
+        return operationLogService.selectPageOperationLogList(entity, pageQuery);
     }
 
     @ApiOperation("导出操作日志记录列表")
     @Log(title = "操作日志", businessType = BusinessType.EXPORT)
-    @SaCheckPermission("monitor:operlog:export")
+    @SaCheckPermission("monitor:operationLog:export")
     @PostMapping("/export")
-    public void export(SysOperLog operLog, HttpServletResponse response) {
-        List<SysOperLog> list = operLogService.selectOperLogList(operLog);
-        ExcelUtil.exportExcel(list, "操作日志", SysOperLog.class, response);
+    public void export(SysOperationLog entity, HttpServletResponse response) {
+        List<SysOperationLog> list = operationLogService.selectOperationLogList(entity);
+        ExcelUtil.exportExcel(list, "操作日志", SysOperationLog.class, response);
     }
 
     @ApiOperation("删除操作日志记录")
     @Log(title = "操作日志", businessType = BusinessType.DELETE)
-    @SaCheckPermission("monitor:operlog:remove")
-    @DeleteMapping("/{operIds}")
-    public R<Void> remove(@PathVariable Long[] operIds) {
-        return toAjax(operLogService.deleteOperLogByIds(operIds));
+    @SaCheckPermission("monitor:operationLog:remove")
+    @DeleteMapping("/{ids}")
+    public R<Void> remove(@PathVariable Long[] ids) {
+        return toAjax(operationLogService.deleteOperationLogByIds(ids));
     }
 
     @ApiOperation("清空操作日志记录")
     @Log(title = "操作日志", businessType = BusinessType.CLEAN)
-    @SaCheckPermission("monitor:operlog:remove")
+    @SaCheckPermission("monitor:operationLog:remove")
     @DeleteMapping("/clean")
     public R<Void> clean() {
-        operLogService.cleanOperLog();
+        operationLogService.cleanOperationLog();
         return R.ok();
     }
 }

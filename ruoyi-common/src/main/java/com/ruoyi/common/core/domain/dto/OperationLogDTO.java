@@ -12,14 +12,14 @@ import java.util.Date;
  */
 
 @Data
-public class OperLogDTO implements Serializable {
+public class OperationLogDTO implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
     /**
      * 日志主键
      */
-    private Long operId;
+    private Long id;
 
     /**
      * 操作模块

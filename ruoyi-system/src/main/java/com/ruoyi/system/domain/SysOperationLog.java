@@ -17,16 +17,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 操作日志记录表 oper_log
+ * 操作日志记录表 sys_operation_log
  *
  * @author Lion Li
  */
-
 @Data
-@TableName("sys_oper_log")
+@TableName("sys_operation_log")
 @ExcelIgnoreUnannotated
 @ApiModel("操作日志记录业务对象")
-public class SysOperLog implements Serializable {
+public class SysOperationLog implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
@@ -35,8 +34,8 @@ public class SysOperLog implements Serializable {
      */
     @ApiModelProperty(value = "日志主键")
     @ExcelProperty(value = "日志主键")
-    @TableId(value = "oper_id")
-    private Long operId;
+    @TableId(value = "id")
+    private Long id;
 
     /**
      * 操作模块
@@ -50,7 +49,7 @@ public class SysOperLog implements Serializable {
      */
     @ApiModelProperty(value = "业务类型（0其它 1新增 2修改 3删除）")
     @ExcelProperty(value = "业务类型", converter = ExcelDictConvert.class)
-    @ExcelDictFormat(dictType = "sys_oper_type")
+    @ExcelDictFormat(dictType = "sys_operation_type")
     private Integer businessType;
 
     /**
@@ -80,14 +79,14 @@ public class SysOperLog implements Serializable {
     @ApiModelProperty(value = "操作类别（0其它 1后台用户 2手机端用户）")
     @ExcelProperty(value = "操作类别", converter = ExcelDictConvert.class)
     @ExcelDictFormat(readConverterExp = "0=其它,1=后台用户,2=手机端用户")
-    private Integer operatorType;
+    private Integer operationType;
 
     /**
      * 操作人员
      */
     @ApiModelProperty(value = "操作人员")
     @ExcelProperty(value = "操作人员")
-    private String operName;
+    private String operationName;
 
     /**
      * 部门名称
@@ -101,28 +100,28 @@ public class SysOperLog implements Serializable {
      */
     @ApiModelProperty(value = "请求url")
     @ExcelProperty(value = "请求地址")
-    private String operUrl;
+    private String operationUrl;
 
     /**
      * 操作地址
      */
     @ApiModelProperty(value = "操作地址")
     @ExcelProperty(value = "操作地址")
-    private String operIp;
+    private String operationIp;
 
     /**
      * 操作地点
      */
     @ApiModelProperty(value = "操作地点")
     @ExcelProperty(value = "操作地点")
-    private String operLocation;
+    private String operationLocation;
 
     /**
      * 请求参数
      */
     @ApiModelProperty(value = "请求参数")
     @ExcelProperty(value = "请求参数")
-    private String operParam;
+    private String operationParam;
 
     /**
      * 返回参数
@@ -151,7 +150,7 @@ public class SysOperLog implements Serializable {
      */
     @ApiModelProperty(value = "操作时间")
     @ExcelProperty(value = "操作时间")
-    private Date operTime;
+    private Date operationTime;
 
     /**
      * 请求参数

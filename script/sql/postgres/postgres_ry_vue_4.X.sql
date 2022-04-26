@@ -273,7 +273,7 @@ insert into sys_menu values('118',  '文件管理', '1', '10', 'oss', 'system/os
 insert into sys_menu values('120',  '任务调度中心', '2',  '5', 'XxlJob',      'monitor/xxljob/index',      '', 1, 0, 'C', '0', '0', 'monitor:xxljob:list',      'job',     'admin', now(), '', null, 'Xxl-Job控制台菜单');
 
 -- 三级菜单
-insert into sys_menu values('500',  '操作日志', '108', '1', 'operlog',    'monitor/operlog/index',    '', 1, 0, 'C', '0', '0', 'monitor:operlog:list',    'form',          'admin', now(), '', null, '操作日志菜单');
+insert into sys_menu values('500',  '操作日志', '108', '1', 'operationLog',    'monitor/operationLog/index',    '', 1, 0, 'C', '0', '0', 'monitor:operationLog:list',    'form',          'admin', now(), '', null, '操作日志菜单');
 insert into sys_menu values('501',  '登录日志', '108', '2', 'logininfor', 'monitor/logininfor/index', '', 1, 0, 'C', '0', '0', 'monitor:logininfor:list', 'logininfor',    'admin', now(), '', null, '登录日志菜单');
 -- 用户管理按钮
 insert into sys_menu values('1001', '用户查询', '100', '1',  '', '', '', 1, 0, 'F', '0', '0', 'system:user:query',          '#', 'admin', now(), '', null, '');
@@ -323,9 +323,9 @@ insert into sys_menu values('1037', '公告新增', '107', '2', '#', '', '', 1, 
 insert into sys_menu values('1038', '公告修改', '107', '3', '#', '', '', 1, 0, 'F', '0', '0', 'system:notice:edit',         '#', 'admin', now(), '', null, '');
 insert into sys_menu values('1039', '公告删除', '107', '4', '#', '', '', 1, 0, 'F', '0', '0', 'system:notice:remove',       '#', 'admin', now(), '', null, '');
 -- 操作日志按钮
-insert into sys_menu values('1040', '操作查询', '500', '1', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:operlog:query',      '#', 'admin', now(), '', null, '');
-insert into sys_menu values('1041', '操作删除', '500', '2', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:operlog:remove',     '#', 'admin', now(), '', null, '');
-insert into sys_menu values('1042', '日志导出', '500', '4', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:operlog:export',     '#', 'admin', now(), '', null, '');
+insert into sys_menu values('1040', '操作查询', '500', '1', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:operationLog:query',      '#', 'admin', now(), '', null, '');
+insert into sys_menu values('1041', '操作删除', '500', '2', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:operationLog:remove',     '#', 'admin', now(), '', null, '');
+insert into sys_menu values('1042', '日志导出', '500', '4', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:operationLog:export',     '#', 'admin', now(), '', null, '');
 -- 登录日志按钮
 insert into sys_menu values('1043', '登录查询', '501', '1', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:logininfor:query',   '#', 'admin', now(), '', null, '');
 insert into sys_menu values('1044', '登录删除', '501', '2', '#', '', '', 1, 0, 'F', '0', '0', 'monitor:logininfor:remove',  '#', 'admin', now(), '', null, '');
@@ -517,45 +517,45 @@ insert into sys_user_post values ('2', '2');
 -- ----------------------------
 -- 10、操作日志记录
 -- ----------------------------
-drop table if exists sys_oper_log;
-create table if not exists sys_oper_log
+drop table if exists sys_operation_log;
+create table if not exists sys_operation_log
 (
-    oper_id        int8,
-    title          varchar(50)   default ''::varchar,
-    business_type  int4          default 0,
-    method         varchar(100)  default ''::varchar,
-    request_method varchar(10)   default ''::varchar,
-    operator_type  int4          default 0,
-    oper_name      varchar(50)   default ''::varchar,
-    dept_name      varchar(50)   default ''::varchar,
-    oper_url       varchar(255)  default ''::varchar,
-    oper_ip        varchar(128)  default ''::varchar,
-    oper_location  varchar(255)  default ''::varchar,
-    oper_param     varchar(2000) default ''::varchar,
-    json_result    varchar(2000) default ''::varchar,
-    status         int4          default 0,
-    error_msg      varchar(2000) default ''::varchar,
-    oper_time      timestamp,
-    constraint sys_oper_log_pk primary key (oper_id)
+    id                 int8,
+    title              varchar(50)   default ''::varchar,
+    business_type      int4          default 0,
+    method             varchar(100)  default ''::varchar,
+    request_method     varchar(10)   default ''::varchar,
+    operation_type     int4          default 0,
+    operation_name     varchar(50)   default ''::varchar,
+    dept_name          varchar(50)   default ''::varchar,
+    operation_url      varchar(255)  default ''::varchar,
+    operation_ip       varchar(128)  default ''::varchar,
+    operation_location varchar(255)  default ''::varchar,
+    operation_param    varchar(2000) default ''::varchar,
+    json_result        varchar(2000) default ''::varchar,
+    status             int4          default 0,
+    error_msg          varchar(2000) default ''::varchar,
+    operation_time     timestamp,
+    constraint sys_operation_log_pk primary key (id)
 );
 
-comment on table sys_oper_log is '操作日志记录';
-comment on column sys_oper_log.oper_id is '日志主键';
-comment on column sys_oper_log.title is '模块标题';
-comment on column sys_oper_log.business_type is '业务类型（0其它 1新增 2修改 3删除）';
-comment on column sys_oper_log.method is '方法名称';
-comment on column sys_oper_log.request_method is '请求方式';
-comment on column sys_oper_log.operator_type is '操作类别（0其它 1后台用户 2手机端用户）';
-comment on column sys_oper_log.oper_name is '操作人员';
-comment on column sys_oper_log.dept_name is '部门名称';
-comment on column sys_oper_log.oper_url is '请求URL';
-comment on column sys_oper_log.oper_ip is '主机地址';
-comment on column sys_oper_log.oper_location is '操作地点';
-comment on column sys_oper_log.oper_param is '请求参数';
-comment on column sys_oper_log.json_result is '返回参数';
-comment on column sys_oper_log.status is '操作状态（0正常 1异常）';
-comment on column sys_oper_log.error_msg is '错误消息';
-comment on column sys_oper_log.oper_time is '操作时间';
+comment on table sys_operation_log is '操作日志记录';
+comment on column sys_operation_log.id is '日志主键';
+comment on column sys_operation_log.title is '模块标题';
+comment on column sys_operation_log.business_type is '业务类型（0其它 1新增 2修改 3删除）';
+comment on column sys_operation_log.method is '方法名称';
+comment on column sys_operation_log.request_method is '请求方式';
+comment on column sys_operation_log.operation_type is '操作类别（0其它 1后台用户 2手机端用户）';
+comment on column sys_operation_log.operation_name is '操作人员';
+comment on column sys_operation_log.dept_name is '部门名称';
+comment on column sys_operation_log.operation_url is '请求URL';
+comment on column sys_operation_log.operation_ip is '主机地址';
+comment on column sys_operation_log.operation_location is '操作地点';
+comment on column sys_operation_log.operation_param is '请求参数';
+comment on column sys_operation_log.json_result is '返回参数';
+comment on column sys_operation_log.status is '操作状态（0正常 1异常）';
+comment on column sys_operation_log.error_msg is '错误消息';
+comment on column sys_operation_log.operation_time is '操作时间';
 
 -- ----------------------------
 -- 11、字典类型表
@@ -592,7 +592,7 @@ insert into sys_dict_type values(3,  '系统开关', 'sys_normal_disable',  '0',
 insert into sys_dict_type values(6,  '系统是否', 'sys_yes_no',          '0', 'admin', now(), '', null, '系统是否列表');
 insert into sys_dict_type values(7,  '通知类型', 'sys_notice_type',     '0', 'admin', now(), '', null, '通知类型列表');
 insert into sys_dict_type values(8,  '通知状态', 'sys_notice_status',   '0', 'admin', now(), '', null, '通知状态列表');
-insert into sys_dict_type values(9,  '操作类型', 'sys_oper_type',       '0', 'admin', now(), '', null, '操作类型列表');
+insert into sys_dict_type values(9,  '操作类型', 'sys_operation_type',       '0', 'admin', now(), '', null, '操作类型列表');
 insert into sys_dict_type values(10, '系统状态', 'sys_common_status',   '0', 'admin', now(), '', null, '登录状态列表');
 
 
@@ -648,15 +648,15 @@ insert into sys_dict_data values(14, 1,  '通知',     '1',       'sys_notice_ty
 insert into sys_dict_data values(15, 2,  '公告',     '2',       'sys_notice_type',     '',   'success', 'N', '0', 'admin', now(), '', null, '公告');
 insert into sys_dict_data values(16, 1,  '正常',     '0',       'sys_notice_status',   '',   'primary', 'Y', '0', 'admin', now(), '', null, '正常状态');
 insert into sys_dict_data values(17, 2,  '关闭',     '1',       'sys_notice_status',   '',   'danger',  'N', '0', 'admin', now(), '', null, '关闭状态');
-insert into sys_dict_data values(18, 1,  '新增',     '1',       'sys_oper_type',       '',   'info',    'N', '0', 'admin', now(), '', null, '新增操作');
-insert into sys_dict_data values(19, 2,  '修改',     '2',       'sys_oper_type',       '',   'info',    'N', '0', 'admin', now(), '', null, '修改操作');
-insert into sys_dict_data values(20, 3,  '删除',     '3',       'sys_oper_type',       '',   'danger',  'N', '0', 'admin', now(), '', null, '删除操作');
-insert into sys_dict_data values(21, 4,  '授权',     '4',       'sys_oper_type',       '',   'primary', 'N', '0', 'admin', now(), '', null, '授权操作');
-insert into sys_dict_data values(22, 5,  '导出',     '5',       'sys_oper_type',       '',   'warning', 'N', '0', 'admin', now(), '', null, '导出操作');
-insert into sys_dict_data values(23, 6,  '导入',     '6',       'sys_oper_type',       '',   'warning', 'N', '0', 'admin', now(), '', null, '导入操作');
-insert into sys_dict_data values(24, 7,  '强退',     '7',       'sys_oper_type',       '',   'danger',  'N', '0', 'admin', now(), '', null, '强退操作');
-insert into sys_dict_data values(25, 8,  '生成代码', '8',       'sys_oper_type',       '',   'warning', 'N', '0', 'admin', now(), '', null, '生成操作');
-insert into sys_dict_data values(26, 9,  '清空数据', '9',       'sys_oper_type',       '',   'danger',  'N', '0', 'admin', now(), '', null, '清空操作');
+insert into sys_dict_data values(18, 1,  '新增',     '1',       'sys_operation_type',       '',   'info',    'N', '0', 'admin', now(), '', null, '新增操作');
+insert into sys_dict_data values(19, 2,  '修改',     '2',       'sys_operation_type',       '',   'info',    'N', '0', 'admin', now(), '', null, '修改操作');
+insert into sys_dict_data values(20, 3,  '删除',     '3',       'sys_operation_type',       '',   'danger',  'N', '0', 'admin', now(), '', null, '删除操作');
+insert into sys_dict_data values(21, 4,  '授权',     '4',       'sys_operation_type',       '',   'primary', 'N', '0', 'admin', now(), '', null, '授权操作');
+insert into sys_dict_data values(22, 5,  '导出',     '5',       'sys_operation_type',       '',   'warning', 'N', '0', 'admin', now(), '', null, '导出操作');
+insert into sys_dict_data values(23, 6,  '导入',     '6',       'sys_operation_type',       '',   'warning', 'N', '0', 'admin', now(), '', null, '导入操作');
+insert into sys_dict_data values(24, 7,  '强退',     '7',       'sys_operation_type',       '',   'danger',  'N', '0', 'admin', now(), '', null, '强退操作');
+insert into sys_dict_data values(25, 8,  '生成代码', '8',       'sys_operation_type',       '',   'warning', 'N', '0', 'admin', now(), '', null, '生成操作');
+insert into sys_dict_data values(26, 9,  '清空数据', '9',       'sys_operation_type',       '',   'danger',  'N', '0', 'admin', now(), '', null, '清空操作');
 insert into sys_dict_data values(27, 1,  '成功',     '0',       'sys_common_status',   '',   'primary', 'N', '0', 'admin', now(), '', null, '正常状态');
 insert into sys_dict_data values(28, 2,  '失败',     '1',       'sys_common_status',   '',   'danger',  'N', '0', 'admin', now(), '', null, '停用状态');
 

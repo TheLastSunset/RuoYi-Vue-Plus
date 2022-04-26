@@ -1,6 +1,6 @@
 package com.ruoyi.common.core.service;
 
-import com.ruoyi.common.core.domain.dto.OperLogDTO;
+import com.ruoyi.common.core.domain.dto.OperationLogDTO;
 import org.springframework.scheduling.annotation.Async;
 
 /**
@@ -8,8 +8,8 @@ import org.springframework.scheduling.annotation.Async;
  *
  * @author Lion Li
  */
-public interface OperLogService {
+public interface OperationLogService {
 
     @Async
-    void recordOper(OperLogDTO operLogDTO);
+    void recordOperationLog(OperationLogDTO operationLogDTO);
 }

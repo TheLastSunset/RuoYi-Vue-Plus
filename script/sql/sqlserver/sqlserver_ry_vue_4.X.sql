@@ -702,23 +702,23 @@ INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [d
 GO
 INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (17, 2, N'关闭', N'1', N'sys_notice_status', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'关闭状态')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (18, 1, N'新增', N'1', N'sys_oper_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'新增操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (18, 1, N'新增', N'1', N'sys_operation_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'新增操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (19, 2, N'修改', N'2', N'sys_oper_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'修改操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (19, 2, N'修改', N'2', N'sys_operation_type', N'', N'info', N'N', N'0', N'admin', getdate(), N'', NULL, N'修改操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (20, 3, N'删除', N'3', N'sys_oper_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'删除操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (20, 3, N'删除', N'3', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'删除操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (21, 4, N'授权', N'4', N'sys_oper_type', N'', N'primary', N'N', N'0', N'admin', getdate(), N'', NULL, N'授权操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (21, 4, N'授权', N'4', N'sys_operation_type', N'', N'primary', N'N', N'0', N'admin', getdate(), N'', NULL, N'授权操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (22, 5, N'导出', N'5', N'sys_oper_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导出操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (22, 5, N'导出', N'5', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导出操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (23, 6, N'导入', N'6', N'sys_oper_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导入操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (23, 6, N'导入', N'6', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'导入操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (24, 7, N'强退', N'7', N'sys_oper_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'强退操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (24, 7, N'强退', N'7', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'强退操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (25, 8, N'生成代码', N'8', N'sys_oper_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'生成操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (25, 8, N'生成代码', N'8', N'sys_operation_type', N'', N'warning', N'N', N'0', N'admin', getdate(), N'', NULL, N'生成操作')
 GO
-INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (26, 9, N'清空数据', N'9', N'sys_oper_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'清空操作')
+INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (26, 9, N'清空数据', N'9', N'sys_operation_type', N'', N'danger', N'N', N'0', N'admin', getdate(), N'', NULL, N'清空操作')
 GO
 INSERT [sys_dict_data] ([dict_code], [dict_sort], [dict_label], [dict_value], [dict_type], [css_class], [list_class], [is_default], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (27, 1, N'成功', N'0', N'sys_common_status', N'', N'primary', N'N', N'0', N'admin', getdate(), N'', NULL, N'正常状态')
 GO
@@ -819,7 +819,7 @@ INSERT [sys_dict_type] ([dict_id], [dict_name], [dict_type], [status], [create_b
 GO
 INSERT [sys_dict_type] ([dict_id], [dict_name], [dict_type], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (8, N'通知状态', N'sys_notice_status', N'0', N'admin', getdate(), N'', NULL, N'通知状态列表')
 GO
-INSERT [sys_dict_type] ([dict_id], [dict_name], [dict_type], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (9, N'操作类型', N'sys_oper_type', N'0', N'admin', getdate(), N'', NULL, N'操作类型列表')
+INSERT [sys_dict_type] ([dict_id], [dict_name], [dict_type], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (9, N'操作类型', N'sys_operation_type', N'0', N'admin', getdate(), N'', NULL, N'操作类型列表')
 GO
 INSERT [sys_dict_type] ([dict_id], [dict_name], [dict_type], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (10, N'系统状态', N'sys_common_status', N'0', N'admin', getdate(), N'', NULL, N'登录状态列表')
 GO
@@ -1092,7 +1092,7 @@ INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [co
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (120, N'任务调度中心', 2, 5, N'XxlJob', N'monitor/xxljob/index', N'', 1, 0, N'C', N'0', N'0', N'monitor:xxljob:list', N'job', N'admin', getdate(), N'', NULL, N'Xxl-Job控制台菜单');
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (500, N'操作日志', 108, 1, N'operlog', N'monitor/operlog/index', N'', 1, 0, N'C', N'0', N'0', N'monitor:operlog:list', N'form', N'admin', getdate(), N'', NULL, N'操作日志菜单')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (500, N'操作日志', 108, 1, N'operationLog', N'monitor/operationLog/index', N'', 1, 0, N'C', N'0', N'0', N'monitor:operationLog:list', N'form', N'admin', getdate(), N'', NULL, N'操作日志菜单')
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (501, N'登录日志', 108, 2, N'logininfor', N'monitor/logininfor/index', N'', 1, 0, N'C', N'0', N'0', N'monitor:logininfor:list', N'logininfor', N'admin', getdate(), N'', NULL, N'登录日志菜单')
 GO
@@ -1174,11 +1174,11 @@ INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [co
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1039, N'公告删除', 107, 4, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'system:notice:remove', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1040, N'操作查询', 500, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:operlog:query', N'#', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1040, N'操作查询', 500, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:operationLog:query', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1041, N'操作删除', 500, 2, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:operlog:remove', N'#', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1041, N'操作删除', 500, 2, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:operationLog:remove', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1042, N'日志导出', 500, 4, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:operlog:export', N'#', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1042, N'日志导出', 500, 4, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:operationLog:export', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1043, N'登录查询', 501, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:logininfor:query', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
@@ -1309,25 +1309,25 @@ GO
 INSERT [sys_notice] ([notice_id], [notice_title], [notice_type], [notice_content], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (2, N'维护通知：2018-07-01 若依系统凌晨维护', N'1', N'<p><img src="/dev-api/profile/upload/2021/12/04/f1e00aba-0182-46b0-9c65-7804dfd0ea4e.png"></p>', N'0', N'admin', getdate(), N'admin', getdate(), N'管理员')
 GO
 
-CREATE TABLE [sys_oper_log]
+CREATE TABLE [sys_operation_log]
 (
-    [oper_id]        bigint                       NOT NULL,
-    [title]          nvarchar(50)   DEFAULT ''    NULL,
-    [business_type]  int            DEFAULT ((0)) NULL,
-    [method]         nvarchar(100)  DEFAULT ''    NULL,
-    [request_method] nvarchar(10)   DEFAULT ''    NULL,
-    [operator_type]  int            DEFAULT ((0)) NULL,
-    [oper_name]      nvarchar(50)   DEFAULT ''    NULL,
-    [dept_name]      nvarchar(50)   DEFAULT ''    NULL,
-    [oper_url]       nvarchar(255)  DEFAULT ''    NULL,
-    [oper_ip]        nvarchar(128)  DEFAULT ''    NULL,
-    [oper_location]  nvarchar(255)  DEFAULT ''    NULL,
-    [oper_param]     nvarchar(2000) DEFAULT ''    NULL,
-    [json_result]    nvarchar(2000) DEFAULT ''    NULL,
-    [status]         int            DEFAULT ((0)) NULL,
-    [error_msg]      nvarchar(2000) DEFAULT ''    NULL,
-    [oper_time]      datetime2(7)                 NULL,
-    CONSTRAINT [PK__sys_oper__34723BF9BD954573] PRIMARY KEY CLUSTERED ([oper_id])
+    [id]                 bigint                       NOT NULL,
+    [title]              nvarchar(50)   DEFAULT ''    NULL,
+    [business_type]      int            DEFAULT ((0)) NULL,
+    [method]             nvarchar(100)  DEFAULT ''    NULL,
+    [request_method]     nvarchar(10)   DEFAULT ''    NULL,
+    [operation_type]     int            DEFAULT ((0)) NULL,
+    [operation_name]     nvarchar(50)   DEFAULT ''    NULL,
+    [dept_name]          nvarchar(50)   DEFAULT ''    NULL,
+    [operation_url]      nvarchar(255)  DEFAULT ''    NULL,
+    [operation_ip]       nvarchar(128)  DEFAULT ''    NULL,
+    [operation_location] nvarchar(255)  DEFAULT ''    NULL,
+    [operation_param]    nvarchar(2000) DEFAULT ''    NULL,
+    [json_result]        nvarchar(2000) DEFAULT ''    NULL,
+    [status]             int            DEFAULT ((0)) NULL,
+    [error_msg]          nvarchar(2000) DEFAULT ''    NULL,
+    [operation_time]     datetime2(7)                 NULL,
+    CONSTRAINT [PK__sys_operation__34723BF9BD954573] PRIMARY KEY CLUSTERED ([id])
         WITH (PAD_INDEX = OFF, STATISTICS_NORECOMPUTE = OFF, IGNORE_DUP_KEY = OFF, ALLOW_ROW_LOCKS = ON, ALLOW_PAGE_LOCKS = ON)
         ON [PRIMARY]
 )
@@ -1337,103 +1337,103 @@ GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'日志主键' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'oper_id'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'id'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'模块标题' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'title'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'业务类型（0其它 1新增 2修改 3删除）' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'business_type'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'方法名称' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'method'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'请求方式' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'request_method'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'操作类别（0其它 1后台用户 2手机端用户）' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'operator_type'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'operation_type'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'操作人员' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'oper_name'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'operation_name'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'部门名称' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'dept_name'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'请求URL' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'oper_url'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'operation_url'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'主机地址' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'oper_ip'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'operation_ip'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'操作地点' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'oper_location'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'operation_location'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'请求参数' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'oper_param'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'operation_param'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'返回参数' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'json_result'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'操作状态（0正常 1异常）' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'status'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'错误消息' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
+    'TABLE', N'sys_operation_log',
     'COLUMN', N'error_msg'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'操作时间' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log',
-    'COLUMN', N'oper_time'
+    'TABLE', N'sys_operation_log',
+    'COLUMN', N'operation_time'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'操作日志记录' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_oper_log'
+    'TABLE', N'sys_operation_log'
 GO
 
 CREATE TABLE [sys_post]
