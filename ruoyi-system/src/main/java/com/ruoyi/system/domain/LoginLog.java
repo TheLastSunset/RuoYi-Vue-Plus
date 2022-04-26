@@ -17,16 +17,15 @@ import java.util.HashMap;
 import java.util.Map;
 
 /**
- * 系统访问记录表 sys_logininfor
+ * 系统访问记录表 sys_login_log
  *
  * @author Lion Li
  */
-
 @Data
-@TableName("sys_logininfor")
+@TableName("sys_login_log")
 @ExcelIgnoreUnannotated
 @ApiModel("系统访问记录业务对象")
-public class SysLogininfor implements Serializable {
+public class LoginLog implements Serializable {
     private static final long serialVersionUID = 1L;
 
     /**
@@ -34,8 +33,8 @@ public class SysLogininfor implements Serializable {
      */
     @ApiModelProperty(value = "访问ID")
     @ExcelProperty(value = "序号")
-    @TableId(value = "info_id")
-    private Long infoId;
+    @TableId(value = "id")
+    private Long id;
 
     /**
      * 用户账号

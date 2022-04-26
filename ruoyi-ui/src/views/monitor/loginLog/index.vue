@@ -60,7 +60,7 @@
           size="mini"
           :disabled="multiple"
           @click="handleDelete"
-          v-hasPermi="['monitor:logininfor:remove']"
+          v-hasPermi="['monitor:loginLog:remove']"
         >删除</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -70,7 +70,7 @@
           icon="el-icon-delete"
           size="mini"
           @click="handleClean"
-          v-hasPermi="['monitor:logininfor:remove']"
+          v-hasPermi="['monitor:loginLog:remove']"
         >清空</el-button>
       </el-col>
       <el-col :span="1.5">
@@ -80,7 +80,7 @@
           icon="el-icon-download"
           size="mini"
           @click="handleExport"
-          v-hasPermi="['monitor:logininfor:export']"
+          v-hasPermi="['monitor:loginLog:export']"
         >导出</el-button>
       </el-col>
       <right-toolbar :showSearch.sync="showSearch" @queryTable="getList"></right-toolbar>
@@ -118,10 +118,10 @@
 </template>
 
 <script>
-import { list, delLogininfor, cleanLogininfor } from "@/api/monitor/logininfor";
+import { list, delLoginLog, cleanLoginLog } from "@/api/monitor/loginLog";
 
 export default {
-  name: "Logininfor",
+  name: "LoginLog",
   dicts: ['sys_common_status'],
   data() {
     return {
@@ -192,7 +192,7 @@ export default {
     handleDelete(row) {
       const infoIds = row.infoId || this.ids;
       this.$modal.confirm('是否确认删除访问编号为"' + infoIds + '"的数据项？').then(function() {
-        return delLogininfor(infoIds);
+        return delLoginLog(infoIds);
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("删除成功");
@@ -201,7 +201,7 @@ export default {
     /** 清空按钮操作 */
     handleClean() {
       this.$modal.confirm('是否确认清空所有登录日志数据项？').then(function() {
-        return cleanLogininfor();
+        return cleanLoginLog();
       }).then(() => {
         this.getList();
         this.$modal.msgSuccess("清空成功");
@@ -209,9 +209,9 @@ export default {
     },
     /** 导出按钮操作 */
     handleExport() {
-      this.download('monitor/logininfor/export', {
+      this.download('monitor/loginLog/export', {
         ...this.queryParams
-      }, `logininfor_${new Date().getTime()}.xlsx`)
+      }, `loginLog_${new Date().getTime()}.xlsx`)
     }
   }
 };

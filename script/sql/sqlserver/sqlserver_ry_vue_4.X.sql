@@ -824,7 +824,7 @@ GO
 INSERT [sys_dict_type] ([dict_id], [dict_name], [dict_type], [status], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (10, N'系统状态', N'sys_common_status', N'0', N'admin', getdate(), N'', NULL, N'登录状态列表')
 GO
 
-CREATE TABLE [sys_logininfor]
+CREATE TABLE [sys_loginLog]
 (
     [info_id]        bigint                      NOT NULL,
     [user_name]      nvarchar(50)  DEFAULT ''    NULL,
@@ -845,61 +845,61 @@ GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'访问ID' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'info_id'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'用户账号' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'user_name'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'登录IP地址' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'ipaddr'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'登录地点' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'login_location'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'浏览器类型' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'browser'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'操作系统' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'os'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'登录状态（0成功 1失败）' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'status'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'提示消息' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'msg'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'访问时间' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor',
+    'TABLE', N'sys_loginLog',
     'COLUMN', N'login_time'
 GO
 EXEC sys.sp_addextendedproperty
     'MS_Description', N'系统访问记录' ,
     'SCHEMA', N'dbo',
-    'TABLE', N'sys_logininfor'
+    'TABLE', N'sys_loginLog'
 GO
 
 CREATE TABLE [sys_menu]
@@ -1094,7 +1094,7 @@ INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [co
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (500, N'操作日志', 108, 1, N'operationLog', N'monitor/operationLog/index', N'', 1, 0, N'C', N'0', N'0', N'monitor:operationLog:list', N'form', N'admin', getdate(), N'', NULL, N'操作日志菜单')
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (501, N'登录日志', 108, 2, N'logininfor', N'monitor/logininfor/index', N'', 1, 0, N'C', N'0', N'0', N'monitor:logininfor:list', N'logininfor', N'admin', getdate(), N'', NULL, N'登录日志菜单')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (501, N'登录日志', 108, 2, N'loginLog', N'monitor/loginLog/index', N'', 1, 0, N'C', N'0', N'0', N'monitor:loginLog:list', N'loginLog', N'admin', getdate(), N'', NULL, N'登录日志菜单')
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1001, N'用户查询', 100, 1, N'', N'', N'', 1, 0, N'F', N'0', N'0', N'system:user:query', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
@@ -1180,11 +1180,11 @@ INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [co
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1042, N'日志导出', 500, 4, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:operationLog:export', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1043, N'登录查询', 501, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:logininfor:query', N'#', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1043, N'登录查询', 501, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:loginLog:query', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1044, N'登录删除', 501, 2, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:logininfor:remove', N'#', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1044, N'登录删除', 501, 2, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:loginLog:remove', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
-INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1045, N'日志导出', 501, 3, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:logininfor:export', N'#', N'admin', getdate(), N'', NULL, N'')
+INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1045, N'日志导出', 501, 3, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:loginLog:export', N'#', N'admin', getdate(), N'', NULL, N'')
 GO
 INSERT [sys_menu] ([menu_id], [menu_name], [parent_id], [order_num], [path], [component], [query_param], [is_frame], [is_cache], [menu_type], [visible], [status], [perms], [icon], [create_by], [create_time], [update_by], [update_time], [remark]) VALUES (1046, N'在线查询', 109, 1, N'#', N'', N'', 1, 0, N'F', N'0', N'0', N'monitor:online:query', N'#', N'admin', getdate(), N'', NULL, N'')
 GO

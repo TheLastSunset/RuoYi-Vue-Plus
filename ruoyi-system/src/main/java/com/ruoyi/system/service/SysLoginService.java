@@ -9,7 +9,7 @@ import com.ruoyi.common.core.domain.dto.RoleDTO;
 import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.core.domain.model.LoginUser;
 import com.ruoyi.common.core.domain.model.XcxLoginUser;
-import com.ruoyi.common.core.service.LogininforService;
+import com.ruoyi.common.core.service.LoginLogService;
 import com.ruoyi.common.enums.DeviceType;
 import com.ruoyi.common.enums.LoginType;
 import com.ruoyi.common.enums.UserStatus;
@@ -43,7 +43,7 @@ public class SysLoginService {
 
     private final ISysUserService userService;
     private final ISysConfigService configService;
-    private final LogininforService asyncService;
+    private final LoginLogService asyncService;
     private final SysPermissionService permissionService;
 
     /**
@@ -69,7 +69,7 @@ public class SysLoginService {
         // 生成token
         LoginHelper.loginByDevice(loginUser, DeviceType.PC);
 
-        asyncService.recordLogininfor(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success"), request);
+        asyncService.recordLoginLog(username, Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success"), request);
         recordLoginInfo(user.getUserId(), username);
         return StpUtil.getTokenValue();
     }
@@ -85,7 +85,7 @@ public class SysLoginService {
         // 生成token
         LoginHelper.loginByDevice(loginUser, DeviceType.APP);
 
-        asyncService.recordLogininfor(user.getUserName(), Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success"), request);
+        asyncService.recordLoginLog(user.getUserName(), Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success"), request);
         recordLoginInfo(user.getUserId(), user.getUserName());
         return StpUtil.getTokenValue();
     }
@@ -108,14 +108,14 @@ public class SysLoginService {
         // 生成token
         LoginHelper.loginByDevice(loginUser, DeviceType.XCX);
 
-        asyncService.recordLogininfor(user.getUserName(), Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success"), request);
+        asyncService.recordLoginLog(user.getUserName(), Constants.LOGIN_SUCCESS, MessageUtils.message("user.login.success"), request);
         recordLoginInfo(user.getUserId(), user.getUserName());
         return StpUtil.getTokenValue();
     }
 
 
     public void logout(String loginName) {
-        asyncService.recordLogininfor(loginName, Constants.LOGOUT, MessageUtils.message("user.logout.success"), ServletUtils.getRequest());
+        asyncService.recordLoginLog(loginName, Constants.LOGOUT, MessageUtils.message("user.logout.success"), ServletUtils.getRequest());
     }
 
     /**
@@ -138,11 +138,11 @@ public class SysLoginService {
         String captcha = RedisUtils.getCacheObject(verifyKey);
         RedisUtils.deleteObject(verifyKey);
         if (captcha == null) {
-            asyncService.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.jcaptcha.expire"), request);
+            asyncService.recordLoginLog(username, Constants.LOGIN_FAIL, MessageUtils.message("user.jcaptcha.expire"), request);
             throw new CaptchaExpireException();
         }
         if (!code.equalsIgnoreCase(captcha)) {
-            asyncService.recordLogininfor(username, Constants.LOGIN_FAIL, MessageUtils.message("user.jcaptcha.error"), request);
+            asyncService.recordLoginLog(username, Constants.LOGIN_FAIL, MessageUtils.message("user.jcaptcha.error"), request);
             throw new CaptchaException();
         }
     }
@@ -239,7 +239,7 @@ public class SysLoginService {
         Integer errorNumber = RedisUtils.getCacheObject(errorKey);
         // 锁定时间内登录 则踢出
         if (ObjectUtil.isNotNull(errorNumber) && errorNumber.equals(setErrorNumber)) {
-            asyncService.recordLogininfor(username, loginFail, MessageUtils.message(loginType.getRetryLimitExceed(), errorLimitTime), request);
+            asyncService.recordLoginLog(username, loginFail, MessageUtils.message(loginType.getRetryLimitExceed(), errorLimitTime), request);
             throw new UserException(loginType.getRetryLimitExceed(), errorLimitTime);
         }
 
@@ -249,12 +249,12 @@ public class SysLoginService {
             // 达到规定错误次数 则锁定登录
             if (errorNumber.equals(setErrorNumber)) {
                 RedisUtils.setCacheObject(errorKey, errorNumber, errorLimitTime, TimeUnit.MINUTES);
-                asyncService.recordLogininfor(username, loginFail, MessageUtils.message(loginType.getRetryLimitExceed(), errorLimitTime), request);
+                asyncService.recordLoginLog(username, loginFail, MessageUtils.message(loginType.getRetryLimitExceed(), errorLimitTime), request);
                 throw new UserException(loginType.getRetryLimitExceed(), errorLimitTime);
             } else {
                 // 未达到规定错误次数 则递增
                 RedisUtils.setCacheObject(errorKey, errorNumber);
-                asyncService.recordLogininfor(username, loginFail, MessageUtils.message(loginType.getRetryLimitCount(), errorNumber), request);
+                asyncService.recordLoginLog(username, loginFail, MessageUtils.message(loginType.getRetryLimitCount(), errorNumber), request);
                 throw new UserException(loginType.getRetryLimitCount(), errorNumber);
             }
         }

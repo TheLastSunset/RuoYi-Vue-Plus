@@ -5,7 +5,7 @@ import com.ruoyi.common.constant.Constants;
 import com.ruoyi.common.constant.UserConstants;
 import com.ruoyi.common.core.domain.entity.SysUser;
 import com.ruoyi.common.core.domain.model.RegisterBody;
-import com.ruoyi.common.core.service.LogininforService;
+import com.ruoyi.common.core.service.LoginLogService;
 import com.ruoyi.common.enums.UserType;
 import com.ruoyi.common.exception.user.CaptchaException;
 import com.ruoyi.common.exception.user.CaptchaExpireException;
@@ -30,7 +30,7 @@ public class SysRegisterService {
 
     private final ISysUserService userService;
     private final ISysConfigService configService;
-    private final LogininforService asyncService;
+    private final LoginLogService asyncService;
 
     /**
      * 注册
@@ -60,7 +60,7 @@ public class SysRegisterService {
         if (!regFlag) {
             throw new UserException("user.register.error");
         }
-        asyncService.recordLogininfor(username, Constants.REGISTER, MessageUtils.message("user.register.success"), request);
+        asyncService.recordLoginLog(username, Constants.REGISTER, MessageUtils.message("user.register.success"), request);
     }
 
     /**
@@ -76,11 +76,11 @@ public class SysRegisterService {
         String captcha = RedisUtils.getCacheObject(verifyKey);
         RedisUtils.deleteObject(verifyKey);
         if (captcha == null) {
-            asyncService.recordLogininfor(username, Constants.REGISTER, MessageUtils.message("user.jcaptcha.expire"), request);
+            asyncService.recordLoginLog(username, Constants.REGISTER, MessageUtils.message("user.jcaptcha.expire"), request);
             throw new CaptchaExpireException();
         }
         if (!code.equalsIgnoreCase(captcha)) {
-            asyncService.recordLogininfor(username, Constants.REGISTER, MessageUtils.message("user.jcaptcha.error"), request);
+            asyncService.recordLoginLog(username, Constants.REGISTER, MessageUtils.message("user.jcaptcha.error"), request);
             throw new CaptchaException();
         }
     }
