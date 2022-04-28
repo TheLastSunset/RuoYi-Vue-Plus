@@ -28,7 +28,7 @@ public class OssFactory {
         RedisUtils.subscribe(OssConstant.CACHE_CONFIG_KEY, String.class, type -> {
             AbstractOssStrategy strategy = getStrategy(type);
             // 未初始化不处理
-            if (strategy.isInit) {
+            if (strategy.isInit()) {
                 refresh(type);
                 log.info("订阅刷新OSS配置 => " + type);
             }
@@ -56,7 +56,7 @@ public class OssFactory {
             throw new OssException("文件存储服务类型无法找到!");
         }
         AbstractOssStrategy strategy = getStrategy(type);
-        if (!strategy.isInit) {
+        if (!strategy.isInit()) {
             refresh(type);
         }
         return strategy;
