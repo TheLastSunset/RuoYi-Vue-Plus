@@ -46,21 +46,21 @@ public class GenUtils {
         column.setJavaType(GenConstants.TYPE_STRING);
         column.setQueryType(GenConstants.QUERY_EQ);
 
-        if (arraysContains(GenConstants.COLUMNTYPE_STR, dataType) || arraysContains(GenConstants.COLUMNTYPE_TEXT, dataType)) {
+        if (arraysContains(GenConstants.COLUMN_TYPE_STR, dataType) || arraysContains(GenConstants.COLUMN_TYPE_TEXT, dataType)) {
             // 字符串长度超过500设置为文本域
             Integer columnLength = getColumnLength(column.getColumnType());
-            String htmlType = columnLength >= 500 || arraysContains(GenConstants.COLUMNTYPE_TEXT, dataType) ? GenConstants.HTML_TEXTAREA : GenConstants.HTML_INPUT;
+            String htmlType = columnLength >= 500 || arraysContains(GenConstants.COLUMN_TYPE_TEXT, dataType) ? GenConstants.HTML_TEXTAREA : GenConstants.HTML_INPUT;
             column.setHtmlType(htmlType);
-        } else if (arraysContains(GenConstants.COLUMNTYPE_TIME, dataType)) {
+        } else if (arraysContains(GenConstants.COLUMN_TYPE_TIME, dataType)) {
             column.setJavaType(GenConstants.TYPE_DATE);
             column.setHtmlType(GenConstants.HTML_DATETIME);
-        } else if (arraysContains(GenConstants.COLUMNTYPE_NUMBER, dataType)) {
+        } else if (arraysContains(GenConstants.COLUMN_TYPE_NUMBER, dataType)) {
             column.setHtmlType(GenConstants.HTML_INPUT);
 
             // 如果是浮点型 统一用BigDecimal
             String[] str = StringUtils.split(StringUtils.substringBetween(column.getColumnType(), "(", ")"), ",");
             if (str != null && str.length == 2 && Integer.parseInt(str[1]) > 0) {
-                column.setJavaType(GenConstants.TYPE_BIGDECIMAL);
+                column.setJavaType(GenConstants.TYPE_BIG_DECIMAL);
             }
             // 如果是整形
             else if (str != null && str.length == 1 && Integer.parseInt(str[0]) <= 10) {
@@ -73,23 +73,23 @@ public class GenUtils {
         }
 
         // BO对象 默认插入勾选
-        if (!arraysContains(GenConstants.COLUMNNAME_NOT_ADD, columnName) && !column.isPk()) {
+        if (!arraysContains(GenConstants.COLUMN_NAME_NOT_ADD, columnName) && !column.isPk()) {
             column.setIsInsert(GenConstants.REQUIRE);
         }
         // BO对象 默认编辑勾选
-        if (!arraysContains(GenConstants.COLUMNNAME_NOT_EDIT, columnName)) {
+        if (!arraysContains(GenConstants.COLUMN_NAME_NOT_EDIT, columnName)) {
             column.setIsEdit(GenConstants.REQUIRE);
         }
         // BO对象 默认是否必填勾选
-        if (!arraysContains(GenConstants.COLUMNNAME_NOT_EDIT, columnName)) {
+        if (!arraysContains(GenConstants.COLUMN_NAME_NOT_EDIT, columnName)) {
             column.setIsRequired(GenConstants.REQUIRE);
         }
         // VO对象 默认返回勾选
-        if (!arraysContains(GenConstants.COLUMNNAME_NOT_LIST, columnName)) {
+        if (!arraysContains(GenConstants.COLUMN_NAME_NOT_LIST, columnName)) {
             column.setIsList(GenConstants.REQUIRE);
         }
         // BO对象 默认查询勾选
-        if (!arraysContains(GenConstants.COLUMNNAME_NOT_QUERY, columnName) && !column.isPk()) {
+        if (!arraysContains(GenConstants.COLUMN_NAME_NOT_QUERY, columnName) && !column.isPk()) {
             column.setIsQuery(GenConstants.REQUIRE);
         }
 

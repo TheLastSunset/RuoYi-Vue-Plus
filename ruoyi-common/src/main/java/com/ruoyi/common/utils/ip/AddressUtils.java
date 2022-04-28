@@ -2,6 +2,7 @@ package com.ruoyi.common.utils.ip;
 
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.net.NetUtil;
+import cn.hutool.core.util.CharsetUtil;
 import cn.hutool.http.HtmlUtil;
 import cn.hutool.http.HttpUtil;
 import com.ruoyi.common.config.RuoYiConfig;
@@ -11,6 +12,12 @@ import com.ruoyi.common.utils.StringUtils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.codec.Charsets;
+import org.apache.commons.lang3.CharSet;
+import org.apache.commons.lang3.CharSetUtils;
+
+import java.nio.charset.Charset;
+import java.nio.charset.StandardCharsets;
 
 /**
  * 获取地址类
@@ -28,9 +35,8 @@ public class AddressUtils {
     public static final String UNKNOWN = "XX XX";
 
     public static String getRealAddressByIP(String ip) {
-        String address = UNKNOWN;
         if (StringUtils.isBlank(ip)) {
-            return address;
+            return UNKNOWN;
         }
         // 内网不查询
         ip = "0:0:0:0:0:0:0:1".equals(ip) ? "127.0.0.1" : HtmlUtil.cleanHtmlTag(ip);
@@ -40,7 +46,7 @@ public class AddressUtils {
         if (RuoYiConfig.isAddressEnabled()) {
             try {
                 String rspStr = HttpUtil.createGet(IP_URL)
-                    .body("ip=" + ip + "&json=true", Constants.GBK)
+                    .body("ip=" + ip + "&json=true", CharsetUtil.GBK)
                     .execute()
                     .body();
                 if (StringUtils.isEmpty(rspStr)) {
