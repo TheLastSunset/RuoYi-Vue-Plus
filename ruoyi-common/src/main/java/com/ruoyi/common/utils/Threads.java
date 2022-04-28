@@ -1,7 +1,6 @@
 package com.ruoyi.common.utils;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import lombok.extern.slf4j.Slf4j;
 
 import java.util.concurrent.*;
@@ -12,7 +11,7 @@ import java.util.concurrent.*;
  * @author ruoyi
  */
 @Slf4j
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class Threads {
 
     /**

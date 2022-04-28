@@ -1,8 +1,8 @@
 package com.ruoyi.common.utils.file;
 
 import cn.hutool.core.io.FileUtil;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
+import org.springframework.http.HttpHeaders;
 
 import javax.servlet.http.HttpServletResponse;
 import java.io.UnsupportedEncodingException;
@@ -14,7 +14,7 @@ import java.nio.charset.StandardCharsets;
  *
  * @author Lion Li
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class FileUtils extends FileUtil {
 
     /**
@@ -26,16 +26,15 @@ public class FileUtils extends FileUtil {
     public static void setAttachmentResponseHeader(HttpServletResponse response, String realFileName) throws UnsupportedEncodingException {
         String percentEncodedFileName = percentEncode(realFileName);
 
-        StringBuilder contentDispositionValue = new StringBuilder();
-        contentDispositionValue.append("attachment; filename=")
-            .append(percentEncodedFileName)
-            .append(";")
-            .append("filename*=")
-            .append("utf-8''")
-            .append(percentEncodedFileName);
+        String contentDispositionValue = "attachment; filename=" +
+                percentEncodedFileName +
+                ";" +
+                "filename*=" +
+                "utf-8''" +
+                percentEncodedFileName;
 
-        response.addHeader("Access-Control-Expose-Headers", "Content-Disposition,download-filename");
-        response.setHeader("Content-disposition", contentDispositionValue.toString());
+        response.addHeader(HttpHeaders.ACCESS_CONTROL_EXPOSE_HEADERS, "Content-Disposition,download-filename");
+        response.setHeader(HttpHeaders.CONTENT_DISPOSITION, contentDispositionValue);
         response.setHeader("download-filename", percentEncodedFileName);
     }
 
@@ -47,6 +46,6 @@ public class FileUtils extends FileUtil {
      */
     public static String percentEncode(String s) throws UnsupportedEncodingException {
         String encode = URLEncoder.encode(s, StandardCharsets.UTF_8.toString());
-        return encode.replaceAll("\\+", "%20");
+        return encode.replace("\\+", "%20");
     }
 }

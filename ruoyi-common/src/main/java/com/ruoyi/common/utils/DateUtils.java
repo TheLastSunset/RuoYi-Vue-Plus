@@ -1,7 +1,7 @@
 package com.ruoyi.common.utils;
 
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import cn.hutool.core.exceptions.UtilException;
+import lombok.experimental.UtilityClass;
 import org.apache.commons.lang3.time.DateFormatUtils;
 
 import java.lang.management.ManagementFactory;
@@ -19,7 +19,7 @@ import java.util.Date;
  *
  * @author ruoyi
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 
     public static final String YYYY = "yyyy";
@@ -33,7 +33,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
     public static final String YYYY_MM_DD_HH_MM_SS = "yyyy-MM-dd HH:mm:ss";
 
     private static final String[] PARSE_PATTERNS = {
-        "yyyy-MM-dd", "yyyy-MM-dd HH:mm:ss", "yyyy-MM-dd HH:mm", "yyyy-MM",
+        YYYY_MM_DD, YYYY_MM_DD_HH_MM_SS, "yyyy-MM-dd HH:mm", YYYY_MM,
         "yyyy/MM/dd", "yyyy/MM/dd HH:mm:ss", "yyyy/MM/dd HH:mm", "yyyy/MM",
         "yyyy.MM.dd", "yyyy.MM.dd HH:mm:ss", "yyyy.MM.dd HH:mm", "yyyy.MM"};
 
@@ -79,7 +79,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
         try {
             return new SimpleDateFormat(format).parse(ts);
         } catch (ParseException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 
@@ -132,9 +132,9 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
      * 计算两个时间差
      */
     public static String getDatePoor(Date endDate, Date nowDate) {
-        long nd = 1000 * 24 * 60 * 60;
-        long nh = 1000 * 60 * 60;
-        long nm = 1000 * 60;
+        long nd = 1000 * 24 * 60 * 60L;
+        long nh = 1000 * 60 * 60L;
+        long nm = 1000 * 60L;
         // long ns = 1000;
         // 获得两个时间的毫秒时间差异
         long diff = endDate.getTime() - nowDate.getTime();

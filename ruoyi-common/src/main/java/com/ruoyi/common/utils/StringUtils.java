@@ -3,8 +3,7 @@ package com.ruoyi.common.utils;
 import cn.hutool.core.collection.CollUtil;
 import cn.hutool.core.lang.Validator;
 import cn.hutool.core.util.StrUtil;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import org.springframework.util.AntPathMatcher;
 
 import java.util.ArrayList;
@@ -17,7 +16,7 @@ import java.util.Set;
  *
  * @author Lion Li
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class StringUtils extends org.apache.commons.lang3.StringUtils {
 
     /**

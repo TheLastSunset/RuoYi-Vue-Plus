@@ -2,15 +2,14 @@ package com.ruoyi.common.utils.sql;
 
 import cn.hutool.core.exceptions.UtilException;
 import com.ruoyi.common.utils.StringUtils;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 /**
  * sql操作工具类
  *
  * @author ruoyi
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class SqlUtil {
 
     /**

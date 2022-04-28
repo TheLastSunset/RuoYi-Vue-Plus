@@ -2,11 +2,10 @@ package com.ruoyi.common.utils.redis;
 
 import cn.hutool.core.collection.IterUtil;
 import com.ruoyi.common.utils.spring.SpringUtils;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import org.redisson.api.*;
 
-import java.time.Instant;
+import java.time.Duration;
 import java.util.Collection;
 import java.util.List;
 import java.util.Map;
@@ -20,8 +19,7 @@ import java.util.function.Consumer;
  * @author Lion Li
  * @version 3.1.0 新增
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
-@SuppressWarnings(value = {"unchecked", "rawtypes"})
+@UtilityClass
 public class RedisUtils {
 
     private static final RedissonClient CLIENT = SpringUtils.getBean(RedissonClient.class);
@@ -108,7 +106,7 @@ public class RedisUtils {
             } catch (Exception e) {
                 long timeToLive = bucket.remainTimeToLive();
                 bucket.set(value);
-                bucket.expire(timeToLive, TimeUnit.MILLISECONDS);
+                bucket.expire(Duration.ofMillis(timeToLive));
             }
         } else {
             bucket.set(value);
@@ -120,13 +118,12 @@ public class RedisUtils {
      *
      * @param key      缓存的键值
      * @param value    缓存的值
-     * @param timeout  时间
-     * @param timeUnit 时间颗粒度
+     * @param duration 超时时间
      */
-    public static <T> void setCacheObject(final String key, final T value, final long timeout, final TimeUnit timeUnit) {
+    public static <T> void setCacheObject(final String key, final T value, Duration duration) {
         RBucket<T> result = CLIENT.getBucket(key);
         result.set(value);
-        result.expire(timeout, timeUnit);
+        result.expire(duration);
     }
 
     /**
@@ -150,20 +147,19 @@ public class RedisUtils {
      * @return true=设置成功；false=设置失败
      */
     public static boolean expire(final String key, final long timeout) {
-        return expire(key, timeout, TimeUnit.SECONDS);
+        return expire(key, Duration.ofSeconds(timeout));
     }
 
     /**
      * 设置有效时间
      *
-     * @param key     Redis键
-     * @param timeout 超时时间
-     * @param unit    时间单位
+     * @param key      Redis键
+     * @param duration 超时时间
      * @return true=设置成功；false=设置失败
      */
-    public static boolean expire(final String key, final long timeout, final TimeUnit unit) {
+    public static boolean expire(final String key, Duration duration) {
         RBucket rBucket = CLIENT.getBucket(key);
-        return rBucket.expire(timeout, unit);
+        return rBucket.expire(duration);
     }
 
     /**
@@ -202,11 +198,10 @@ public class RedisUtils {
      *
      * @param collection 多个对象
      */
+    @SuppressWarnings(value = {"unchecked", "rawtypes"})
     public static void deleteObject(final Collection collection) {
         RBatch batch = CLIENT.createBatch();
-        collection.forEach(t -> {
-            batch.getBucket(t.toString()).deleteAsync();
-        });
+        collection.forEach(t -> batch.getBucket(t.toString()).deleteAsync());
         batch.execute();
     }
 

@@ -1,8 +1,7 @@
 package com.ruoyi.common.utils;
 
 import com.ruoyi.common.utils.spring.SpringUtils;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 
 import javax.validation.ConstraintViolation;
 import javax.validation.ConstraintViolationException;
@@ -14,7 +13,7 @@ import java.util.Set;
  *
  * @author Lion Li
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class ValidatorUtils {
 
     private static final Validator VALID = SpringUtils.getBean(Validator.class);

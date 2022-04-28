@@ -1,8 +1,7 @@
 package com.ruoyi.common.utils;
 
 import com.ruoyi.common.utils.spring.SpringUtils;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import org.springframework.context.MessageSource;
 import org.springframework.context.i18n.LocaleContextHolder;
 
@@ -11,7 +10,7 @@ import org.springframework.context.i18n.LocaleContextHolder;
  *
  * @author Lion Li
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class MessageUtils {
 
     private static final MessageSource MESSAGE_SOURCE = SpringUtils.getBean(MessageSource.class);

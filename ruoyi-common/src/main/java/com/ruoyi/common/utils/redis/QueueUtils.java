@@ -1,8 +1,7 @@
 package com.ruoyi.common.utils.redis;
 
 import com.ruoyi.common.utils.spring.SpringUtils;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import org.redisson.api.*;
 
 import java.util.Comparator;
@@ -17,7 +16,7 @@ import java.util.function.Consumer;
  * @author Lion Li
  * @version 3.6.0 新增
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class QueueUtils {
 
     private static final RedissonClient CLIENT = SpringUtils.getBean(RedissonClient.class);

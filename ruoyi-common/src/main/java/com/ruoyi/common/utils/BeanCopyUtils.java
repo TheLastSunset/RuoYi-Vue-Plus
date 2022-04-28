@@ -6,15 +6,13 @@ import cn.hutool.core.map.MapUtil;
 import cn.hutool.core.util.ObjectUtil;
 import cn.hutool.core.util.ReflectUtil;
 import cn.hutool.core.util.StrUtil;
-import lombok.AccessLevel;
-import lombok.NoArgsConstructor;
+import lombok.experimental.UtilityClass;
 import org.springframework.cglib.beans.BeanCopier;
 import org.springframework.cglib.beans.BeanMap;
 import org.springframework.cglib.core.Converter;
 
 import java.util.List;
 import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * bean深拷贝工具(基于 cglib 性能优异)
@@ -25,7 +23,7 @@ import java.util.stream.Collectors;
  *
  * @author Lion Li
  */
-@NoArgsConstructor(access = AccessLevel.PRIVATE)
+@UtilityClass
 public class BeanCopyUtils {
 
     /**
@@ -83,7 +81,7 @@ public class BeanCopyUtils {
             V target = ReflectUtil.newInstanceIfPossible(desc);
             copy(source, target);
             return target;
-        }).collect(Collectors.toList());
+        }).toList();
     }
 
     /**
@@ -173,9 +171,8 @@ public class BeanCopyUtils {
          * @return 属性名和Map映射的key
          */
         private String genKey(Class<?> srcClass, Class<?> targetClass, Converter converter) {
-            final StringBuilder key = StrUtil.builder()
-                .append(srcClass.getName()).append('#').append(targetClass.getName());
-            if(null != converter){
+            final StringBuilder key = StrUtil.builder().append(srcClass.getName()).append('#').append(targetClass.getName());
+            if (null != converter) {
                 key.append('#').append(converter.getClass().getName());
             }
             return key.toString();
