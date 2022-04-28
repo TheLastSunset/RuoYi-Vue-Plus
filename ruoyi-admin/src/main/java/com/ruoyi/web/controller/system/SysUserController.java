@@ -110,13 +110,13 @@ public class SysUserController extends BaseController {
         userService.checkUserDataScope(userId);
         Map<String, Object> ajax = new HashMap<>();
         List<SysRole> roles = roleService.selectRoleAll();
-        ajax.put("roles", LoginHelper.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
+        ajax.put("roles", LoginHelper.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).toList());
         ajax.put("posts", postService.selectPostAll());
         if (ObjectUtil.isNotNull(userId)) {
             SysUser sysUser = userService.selectUserById(userId);
             ajax.put("user", sysUser);
             ajax.put("postIds", postService.selectPostListByUserId(userId));
-            ajax.put("roleIds", sysUser.getRoles().stream().map(SysRole::getRoleId).collect(Collectors.toList()));
+            ajax.put("roleIds", sysUser.getRoles().stream().map(SysRole::getRoleId).toList());
         }
         return R.ok(ajax);
     }
@@ -214,7 +214,7 @@ public class SysUserController extends BaseController {
         List<SysRole> roles = roleService.selectRolesByUserId(userId);
         Map<String, Object> ajax = new HashMap<>();
         ajax.put("user", user);
-        ajax.put("roles", LoginHelper.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).collect(Collectors.toList()));
+        ajax.put("roles", LoginHelper.isAdmin(userId) ? roles : roles.stream().filter(r -> !r.isAdmin()).toList());
         return R.ok(ajax);
     }
 

@@ -81,6 +81,7 @@ public class SysUserOnlineController extends BaseController {
         try {
             StpUtil.kickoutByTokenValue(tokenId);
         } catch (NotLoginException e) {
+            return R.fail(e.getMessage());
         }
         return R.ok();
     }

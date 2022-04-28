@@ -38,7 +38,7 @@ public interface ISysOssConfigService {
      * @param bo 对象存储配置新增业务对象
      * @return
      */
-    Boolean insertByBo(SysOssConfigBo bo);
+    boolean insertByBo(SysOssConfigBo bo);
 
     /**
      * 根据编辑业务对象修改对象存储配置
@@ -46,7 +46,7 @@ public interface ISysOssConfigService {
      * @param bo 对象存储配置编辑业务对象
      * @return
      */
-    Boolean updateByBo(SysOssConfigBo bo);
+    boolean updateByBo(SysOssConfigBo bo);
 
     /**
      * 校验并删除数据
@@ -55,7 +55,7 @@ public interface ISysOssConfigService {
      * @param isValid 是否校验,true-删除前校验,false-不校验
      * @return
      */
-    Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+    boolean deleteWithValidByIds(Collection<Long> ids, boolean isValid);
 
     /**
      * 启用停用状态

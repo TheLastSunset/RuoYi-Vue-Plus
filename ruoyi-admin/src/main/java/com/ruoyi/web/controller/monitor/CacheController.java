@@ -36,7 +36,7 @@ public class CacheController {
         Properties commandStats = (Properties) redisTemplate.execute((RedisCallback<Object>) connection -> connection.info("commandstats"));
         Object dbSize = redisTemplate.execute((RedisCallback<Object>) RedisServerCommands::dbSize);
 
-        Map<String, Object> result = new HashMap<>(3);
+        Map<String, Object> result = new HashMap<>(8);
         result.put("info", info);
         result.put("dbSize", dbSize);
 

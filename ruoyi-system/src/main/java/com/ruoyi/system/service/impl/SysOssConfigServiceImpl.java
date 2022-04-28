@@ -84,14 +84,14 @@ public class SysOssConfigServiceImpl implements ISysOssConfigService {
     }
 
     @Override
-    public Boolean insertByBo(SysOssConfigBo bo) {
+    public boolean insertByBo(SysOssConfigBo bo) {
         SysOssConfig config = BeanUtil.toBean(bo, SysOssConfig.class);
         validEntityBeforeSave(config);
         return setConfigCache(baseMapper.insert(config) > 0, config);
     }
 
     @Override
-    public Boolean updateByBo(SysOssConfigBo bo) {
+    public boolean updateByBo(SysOssConfigBo bo) {
         SysOssConfig config = BeanUtil.toBean(bo, SysOssConfig.class);
         validEntityBeforeSave(config);
         LambdaUpdateWrapper<SysOssConfig> luw = new LambdaUpdateWrapper<>();
@@ -113,7 +113,7 @@ public class SysOssConfigServiceImpl implements ISysOssConfigService {
     }
 
     @Override
-    public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
+    public boolean deleteWithValidByIds(Collection<Long> ids, boolean isValid) {
         if (isValid) {
             if (CollUtil.containsAny(ids, OssConstant.SYSTEM_DATA_IDS)) {
                 throw new ServiceException("系统内置, 不可删除!");

@@ -1,5 +1,6 @@
 package com.ruoyi.system.service.impl;
 
+import cn.hutool.core.io.file.FileNameUtil;
 import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
 import com.baomidou.mybatisplus.core.toolkit.Wrappers;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
@@ -63,8 +64,8 @@ public class SysOssServiceImpl implements ISysOssService {
 
     @Override
     public SysOss upload(MultipartFile file) {
-        String originalfileName = file.getOriginalFilename();
-        String suffix = StringUtils.substring(originalfileName, originalfileName.lastIndexOf("."), originalfileName.length());
+        String originalFilename = file.getOriginalFilename();
+        String suffix = FileNameUtil.getSuffix(originalFilename);
         IOssStrategy storage = OssFactory.instance();
         UploadResult uploadResult;
         try {
@@ -77,14 +78,14 @@ public class SysOssServiceImpl implements ISysOssService {
         oss.setUrl(uploadResult.getUrl());
         oss.setFileSuffix(suffix);
         oss.setFileName(uploadResult.getFilename());
-        oss.setOriginalName(originalfileName);
+        oss.setOriginalName(originalFilename);
         oss.setService(storage.getServiceType().getValue());
         baseMapper.insert(oss);
         return oss;
     }
 
     @Override
-    public Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid) {
+    public boolean deleteWithValidByIds(Collection<Long> ids, boolean isValid) {
         if (isValid) {
             // 做一些业务上的校验,判断是否需要校验
         }

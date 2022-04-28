@@ -22,6 +22,6 @@ public interface ISysOssService {
 
     SysOss upload(MultipartFile file);
 
-    Boolean deleteWithValidByIds(Collection<Long> ids, Boolean isValid);
+    boolean deleteWithValidByIds(Collection<Long> ids, boolean isValid);
 
 }

@@ -101,6 +101,7 @@ public class SysLoginController {
             StpUtil.logout();
             loginService.logout(LoginHelper.getUsername());
         } catch (NotLoginException e) {
+            return R.fail(e.getMessage());
         }
         return R.ok("退出成功");
     }
