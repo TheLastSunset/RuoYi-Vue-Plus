@@ -69,7 +69,7 @@ public class GenTableServiceImpl implements IGenTableService {
     public List<GenTableColumn> selectGenTableColumnListByTableId(Long tableId) {
         return genTableColumnMapper.selectList(new LambdaQueryWrapper<GenTableColumn>()
             .eq(GenTableColumn::getTableId, tableId)
-            .orderByAsc(GenTableColumn::getSort));
+            .orderByAsc(GenTableColumn::getOrderNum));
     }
 
     /**
