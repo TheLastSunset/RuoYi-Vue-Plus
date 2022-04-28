@@ -29,7 +29,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 import java.util.concurrent.TimeUnit;
-import java.util.function.Supplier;
+import java.util.function.BooleanSupplier;
 
 /**
  * 登录校验方法
@@ -228,7 +228,7 @@ public class SysLoginService {
     /**
      * 登录校验
      */
-    private void checkLogin(LoginType loginType, String username, Supplier<Boolean> supplier) {
+    private void checkLogin(LoginType loginType, String username, BooleanSupplier supplier) {
         HttpServletRequest request = ServletUtils.getRequest();
         String errorKey = Constants.LOGIN_ERROR + username;
         Integer errorLimitTime = Constants.LOGIN_ERROR_LIMIT_TIME;
@@ -243,7 +243,7 @@ public class SysLoginService {
             throw new UserException(loginType.getRetryLimitExceed(), errorLimitTime);
         }
 
-        if (supplier.get()) {
+        if (supplier.getAsBoolean()) {
             // 是否第一次
             errorNumber = ObjectUtil.isNull(errorNumber) ? 1 : errorNumber + 1;
             // 达到规定错误次数 则锁定登录
