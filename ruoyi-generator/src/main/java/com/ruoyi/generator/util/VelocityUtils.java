@@ -91,7 +91,7 @@ public class VelocityUtils {
     public static void setTreeVelocityContext(VelocityContext context, GenTable genTable) {
         String options = genTable.getOptions();
         Dict paramsObj = JsonUtils.parseMap(options);
-        String treeCode = getTreecode(paramsObj);
+        String treeCode = getTreeCode(paramsObj);
         String treeParentCode = getTreeParentCode(paramsObj);
         String treeName = getTreeName(paramsObj);
 
@@ -130,7 +130,7 @@ public class VelocityUtils {
      * @return 模板列表
      */
     public static List<String> getTemplateList(String tplCategory) {
-        List<String> templates = new ArrayList<String>();
+        List<String> templates = new ArrayList<>();
         templates.add("vm/java/domain.java.vm");
         templates.add("vm/java/vo.java.vm");
         templates.add("vm/java/bo.java.vm");
@@ -141,7 +141,7 @@ public class VelocityUtils {
         templates.add("vm/xml/mapper.xml.vm");
         if (DataBaseHelper.isOracle()) {
             templates.add("vm/sql/oracle/sql.vm");
-        } else if (DataBaseHelper.isPostgerSql()) {
+        } else if (DataBaseHelper.isPostgreSql()) {
             templates.add("vm/sql/postgres/sql.vm");
         } else if (DataBaseHelper.isSqlServer()) {
             templates.add("vm/sql/sqlserver/sql.vm");
@@ -229,10 +229,10 @@ public class VelocityUtils {
      * @param genTable 业务表对象
      * @return 返回需要导入的包列表
      */
-    public static HashSet<String> getImportList(GenTable genTable) {
+    public static Set<String> getImportList(GenTable genTable) {
         List<GenTableColumn> columns = genTable.getColumns();
         GenTable subGenTable = genTable.getSubTable();
-        HashSet<String> importList = new HashSet<String>();
+        Set<String> importList = new HashSet<>();
         if (ObjectUtil.isNotNull(subGenTable)) {
             importList.add("java.util.List");
         }
@@ -255,7 +255,7 @@ public class VelocityUtils {
      */
     public static String getDicts(GenTable genTable) {
         List<GenTableColumn> columns = genTable.getColumns();
-        Set<String> dicts = new HashSet<String>();
+        Set<String> dicts = new HashSet<>();
         addDicts(dicts, columns);
         if (ObjectUtil.isNotNull(genTable.getSubTable())) {
             List<GenTableColumn> subColumns = genTable.getSubTable().getColumns();
@@ -311,7 +311,7 @@ public class VelocityUtils {
      * @param paramsObj 生成其他选项
      * @return 树编码
      */
-    public static String getTreecode(Map<String, Object> paramsObj) {
+    public static String getTreeCode(Map<String, Object> paramsObj) {
         if (CollUtil.isNotEmpty(paramsObj) && paramsObj.containsKey(GenConstants.TREE_CODE)) {
             return StringUtils.toCamelCase(Convert.toStr(paramsObj.get(GenConstants.TREE_CODE)));
         }

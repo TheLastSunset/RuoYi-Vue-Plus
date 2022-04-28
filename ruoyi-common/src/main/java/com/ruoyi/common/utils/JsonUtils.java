@@ -1,5 +1,6 @@
 package com.ruoyi.common.utils;
 
+import cn.hutool.core.exceptions.UtilException;
 import cn.hutool.core.lang.Dict;
 import cn.hutool.core.util.ArrayUtil;
 import cn.hutool.core.util.ObjectUtil;
@@ -35,7 +36,7 @@ public class JsonUtils {
         try {
             return OBJECT_MAPPER.writeValueAsString(object);
         } catch (JsonProcessingException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 
@@ -46,7 +47,7 @@ public class JsonUtils {
         try {
             return OBJECT_MAPPER.readValue(text, clazz);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 
@@ -57,7 +58,7 @@ public class JsonUtils {
         try {
             return OBJECT_MAPPER.readValue(bytes, clazz);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 
@@ -68,7 +69,7 @@ public class JsonUtils {
         try {
             return OBJECT_MAPPER.readValue(text, typeReference);
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 
@@ -79,7 +80,7 @@ public class JsonUtils {
         try {
             return OBJECT_MAPPER.readValue(text, OBJECT_MAPPER.getTypeFactory().constructType(Dict.class));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 
@@ -90,7 +91,7 @@ public class JsonUtils {
         try {
             return OBJECT_MAPPER.readValue(text, OBJECT_MAPPER.getTypeFactory().constructCollectionType(List.class, Dict.class));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 
@@ -101,7 +102,7 @@ public class JsonUtils {
         try {
             return OBJECT_MAPPER.readValue(text, OBJECT_MAPPER.getTypeFactory().constructCollectionType(List.class, clazz));
         } catch (IOException e) {
-            throw new RuntimeException(e);
+            throw new UtilException(e);
         }
     }
 

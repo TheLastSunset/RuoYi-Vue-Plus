@@ -1,6 +1,6 @@
 package com.ruoyi.common.utils.sql;
 
-import com.ruoyi.common.exception.UtilException;
+import cn.hutool.core.exceptions.UtilException;
 import com.ruoyi.common.utils.StringUtils;
 import lombok.AccessLevel;
 import lombok.NoArgsConstructor;
