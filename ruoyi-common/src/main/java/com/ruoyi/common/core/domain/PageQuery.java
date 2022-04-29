@@ -8,6 +8,7 @@ import com.ruoyi.common.utils.sql.SqlUtil;
 import io.swagger.annotations.ApiModelProperty;
 import lombok.Data;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -19,6 +20,7 @@ import java.io.Serializable;
 @Data
 public class PageQuery implements Serializable {
 
+    @Serial
     private static final long serialVersionUID = 1L;
 
     /**
@@ -56,12 +58,12 @@ public class PageQuery implements Serializable {
     public static final int DEFAULT_PAGE_SIZE = Integer.MAX_VALUE;
 
     public <T> Page<T> build() {
-        Integer pageNum = ObjectUtil.defaultIfNull(getPageNum(), DEFAULT_PAGE_NUM);
-        Integer pageSize = ObjectUtil.defaultIfNull(getPageSize(), DEFAULT_PAGE_SIZE);
-        if (pageNum <= 0) {
-            pageNum = DEFAULT_PAGE_NUM;
+        int num = ObjectUtil.defaultIfNull(getPageNum(), DEFAULT_PAGE_NUM);
+        int size = ObjectUtil.defaultIfNull(getPageSize(), DEFAULT_PAGE_SIZE);
+        if (num <= 0) {
+            num = DEFAULT_PAGE_NUM;
         }
-        Page<T> page = new Page<>(pageNum, pageSize);
+        Page<T> page = new Page<>(num, size);
         OrderItem orderItem = buildOrderItem();
         if (ObjectUtil.isNotNull(orderItem)) {
             page.addOrder(orderItem);
