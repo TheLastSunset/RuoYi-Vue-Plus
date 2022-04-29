@@ -38,6 +38,7 @@
         <dynamic-ds.version>3.5.1</dynamic-ds.version>
         <tlog.version>1.3.6</tlog.version>
         <xxl-job.version>2.3.0</xxl-job.version>
+        <bizlog.version>2.0.2</bizlog.version>
 
         <!-- jdk11 缺失依赖 jaxb-->
         <jaxb.version>3.0.1</jaxb.version>
@@ -302,6 +303,12 @@
                 <groupId>com.ruoyi</groupId>
                 <artifactId>ruoyi-demo</artifactId>
                 <version>${ruoyi-vue-plus.version}</version>
+            </dependency>
+
+            <dependency>
+                <groupId>io.github.mouzt</groupId>
+                <artifactId>bizlog-sdk</artifactId>
+                <version>${bizlog.version}</version>
             </dependency>
 
         </dependencies>
