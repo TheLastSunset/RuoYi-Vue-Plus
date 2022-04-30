@@ -35,7 +35,6 @@ import java.util.List;
 import java.util.Map;
 import java.util.Set;
 import java.util.concurrent.ConcurrentHashMap;
-import java.util.stream.Collectors;
 
 /**
  * 数据权限过滤
@@ -54,7 +53,7 @@ public class PlusDataPermissionHandler {
     /**
      * 无效注解方法缓存用于快速返回
      */
-    private final Set<String> inavlidCacheSet = new ConcurrentHashSet<>();
+    private final Set<String> invalidCacheSet = new ConcurrentHashSet<>();
 
     /**
      * spel 解析器
@@ -70,7 +69,7 @@ public class PlusDataPermissionHandler {
     public Expression getSqlSegment(Expression where, String mappedStatementId, boolean isSelect) {
         DataColumn[] dataColumns = findAnnotation(mappedStatementId);
         if (ArrayUtil.isEmpty(dataColumns)) {
-            inavlidCacheSet.add(mappedStatementId);
+            invalidCacheSet.add(mappedStatementId);
             return where;
         }
         LoginUser currentUser = DataPermissionHelper.getVariable("user");
@@ -155,7 +154,7 @@ public class PlusDataPermissionHandler {
         String methodName = sb.substring(index + 1, sb.length());
         Class<?> clazz = ClassUtil.loadClass(clazzName);
         List<Method> methods = Arrays.stream(ClassUtil.getDeclaredMethods(clazz))
-            .filter(method -> method.getName().equals(methodName)).collect(Collectors.toList());
+                .filter(method -> method.getName().equals(methodName)).toList();
         DataPermission dataPermission;
         // 获取方法注解
         for (Method method : methods) {
@@ -186,6 +185,6 @@ public class PlusDataPermissionHandler {
      * 是否为无效方法 无数据权限
      */
     public boolean isInvalid(String mappedStatementId) {
-        return inavlidCacheSet.contains(mappedStatementId);
+        return invalidCacheSet.contains(mappedStatementId);
     }
 }

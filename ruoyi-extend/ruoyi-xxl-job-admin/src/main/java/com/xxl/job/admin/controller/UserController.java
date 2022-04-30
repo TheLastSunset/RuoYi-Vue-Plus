@@ -35,7 +35,7 @@ public class UserController {
     private XxlJobGroupDao xxlJobGroupDao;
 
     @RequestMapping
-    @PermissionLimit(adminuser = true)
+    @PermissionLimit(adminUser = true)
     public String index(Model model) {
 
         // 执行器列表
@@ -47,7 +47,7 @@ public class UserController {
 
     @RequestMapping("/pageList")
     @ResponseBody
-    @PermissionLimit(adminuser = true)
+    @PermissionLimit(adminUser = true)
     public Map<String, Object> pageList(@RequestParam(required = false, defaultValue = "0") int start,
                                         @RequestParam(required = false, defaultValue = "10") int length,
                                         String username, int role) {
@@ -73,7 +73,7 @@ public class UserController {
 
     @RequestMapping("/add")
     @ResponseBody
-    @PermissionLimit(adminuser = true)
+    @PermissionLimit(adminUser = true)
     public ReturnT<String> add(XxlJobUser xxlJobUser) {
 
         // valid username
@@ -108,7 +108,7 @@ public class UserController {
 
     @RequestMapping("/update")
     @ResponseBody
-    @PermissionLimit(adminuser = true)
+    @PermissionLimit(adminUser = true)
     public ReturnT<String> update(HttpServletRequest request, XxlJobUser xxlJobUser) {
 
         // avoid opt login seft
@@ -136,7 +136,7 @@ public class UserController {
 
     @RequestMapping("/remove")
     @ResponseBody
-    @PermissionLimit(adminuser = true)
+    @PermissionLimit(adminUser = true)
     public ReturnT<String> remove(HttpServletRequest request, int id) {
 
         // avoid opt login seft

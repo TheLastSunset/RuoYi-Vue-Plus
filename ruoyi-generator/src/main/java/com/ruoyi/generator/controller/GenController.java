@@ -172,7 +172,7 @@ public class GenController extends BaseController {
     @Log(title = "代码生成", businessType = BusinessType.UPDATE)
     @GetMapping("/synchDb/{tableName}")
     public R<Void> synchDb(@PathVariable("tableName") String tableName) {
-        genTableService.synchDb(tableName);
+        genTableService.syncDb(tableName);
         return R.ok();
     }
 

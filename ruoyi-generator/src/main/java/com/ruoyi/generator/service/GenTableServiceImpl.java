@@ -60,12 +60,6 @@ public class GenTableServiceImpl implements IGenTableService {
     private final GenTableMapper baseMapper;
     private final GenTableColumnMapper genTableColumnMapper;
 
-    /**
-     * 查询业务字段列表
-     *
-     * @param tableId 业务字段编号
-     * @return 业务字段集合
-     */
     @Override
     public List<GenTableColumn> selectGenTableColumnListByTableId(Long tableId) {
         return genTableColumnMapper.selectList(new LambdaQueryWrapper<GenTableColumn>()
@@ -73,12 +67,6 @@ public class GenTableServiceImpl implements IGenTableService {
             .orderByAsc(GenTableColumn::getOrderNum));
     }
 
-    /**
-     * 查询业务信息
-     *
-     * @param id 业务ID
-     * @return 业务信息
-     */
     @Override
     public GenTable selectGenTableById(Long id) {
         GenTable genTable = baseMapper.selectGenTableById(id);
@@ -109,33 +97,16 @@ public class GenTableServiceImpl implements IGenTableService {
         return TableDataInfo.build(page);
     }
 
-    /**
-     * 查询据库列表
-     *
-     * @param tableNames 表名称组
-     * @return 数据库表集合
-     */
     @Override
     public List<GenTable> selectDbTableListByNames(String[] tableNames) {
         return baseMapper.selectDbTableListByNames(tableNames);
     }
 
-    /**
-     * 查询所有表信息
-     *
-     * @return 表信息集合
-     */
     @Override
     public List<GenTable> selectGenTableAll() {
         return baseMapper.selectGenTableAll();
     }
 
-    /**
-     * 修改业务
-     *
-     * @param genTable 业务信息
-     * @return 结果
-     */
     @Override
     public void updateGenTable(GenTable genTable) {
         String options = JsonUtils.toJsonString(genTable.getParams());
@@ -148,12 +119,6 @@ public class GenTableServiceImpl implements IGenTableService {
         }
     }
 
-    /**
-     * 删除业务对象
-     *
-     * @param tableIds 需要删除的数据ID
-     * @return 结果
-     */
     @Override
     public void deleteGenTableByIds(Long[] tableIds) {
         List<Long> ids = Arrays.asList(tableIds);
@@ -161,11 +126,6 @@ public class GenTableServiceImpl implements IGenTableService {
         genTableColumnMapper.delete(new LambdaQueryWrapper<GenTableColumn>().in(GenTableColumn::getTableId, ids));
     }
 
-    /**
-     * 导入表结构
-     *
-     * @param tableList 导入表列表
-     */
     @Override
     public void importGenTable(List<GenTable> tableList) {
         String operName = LoginHelper.getUsername();
@@ -192,12 +152,6 @@ public class GenTableServiceImpl implements IGenTableService {
         }
     }
 
-    /**
-     * 预览代码
-     *
-     * @param tableId 表编号
-     * @return 预览数据列表
-     */
     @Override
     public Map<String, String> previewCode(Long tableId) {
         Map<String, String> dataMap = new LinkedHashMap<>();
@@ -229,12 +183,6 @@ public class GenTableServiceImpl implements IGenTableService {
         return dataMap;
     }
 
-    /**
-     * 生成代码（下载方式）
-     *
-     * @param tableName 表名称
-     * @return 数据
-     */
     @Override
     public byte[] downloadCode(String tableName) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
@@ -244,11 +192,6 @@ public class GenTableServiceImpl implements IGenTableService {
         return outputStream.toByteArray();
     }
 
-    /**
-     * 生成代码（自定义路径）
-     *
-     * @param tableName 表名称
-     */
     @Override
     public void generatorCode(String tableName) {
         // 查询表信息
@@ -280,13 +223,8 @@ public class GenTableServiceImpl implements IGenTableService {
         }
     }
 
-    /**
-     * 同步数据库
-     *
-     * @param tableName 表名称
-     */
     @Override
-    public void synchDb(String tableName) {
+    public void syncDb(String tableName) {
         GenTable table = baseMapper.selectGenTableByName(tableName);
         List<GenTableColumn> tableColumns = table.getColumns();
         Map<String, GenTableColumn> tableColumnMap = tableColumns.stream().collect(Collectors.toMap(GenTableColumn::getColumnName, Function.identity()));
@@ -295,7 +233,7 @@ public class GenTableServiceImpl implements IGenTableService {
         if (CollUtil.isEmpty(dbTableColumns)) {
             throw new ServiceException("同步数据失败，原表结构不存在");
         }
-        List<String> dbTableColumnNames = dbTableColumns.stream().map(GenTableColumn::getColumnName).collect(Collectors.toList());
+        List<String> dbTableColumnNames = dbTableColumns.stream().map(GenTableColumn::getColumnName).toList();
 
         List<GenTableColumn> saveColumns = new ArrayList<>();
         dbTableColumns.forEach(column -> {
@@ -324,19 +262,13 @@ public class GenTableServiceImpl implements IGenTableService {
             genTableColumnMapper.insertBatch(saveColumns);
         }
 
-        List<GenTableColumn> delColumns = tableColumns.stream().filter(column -> !dbTableColumnNames.contains(column.getColumnName())).collect(Collectors.toList());
+        List<GenTableColumn> delColumns = tableColumns.stream().filter(column -> !dbTableColumnNames.contains(column.getColumnName())).toList();
         if (CollUtil.isNotEmpty(delColumns)) {
-            List<Long> ids = delColumns.stream().map(GenTableColumn::getColumnId).collect(Collectors.toList());
+            List<Long> ids = delColumns.stream().map(GenTableColumn::getColumnId).toList();
             genTableColumnMapper.deleteBatchIds(ids);
         }
     }
 
-    /**
-     * 批量生成代码（下载方式）
-     *
-     * @param tableNames 表数组
-     * @return 数据
-     */
     @Override
     public byte[] downloadCode(String[] tableNames) {
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

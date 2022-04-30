@@ -94,7 +94,6 @@ public class LogAspect {
      *
      * @param log          日志
      * @param operationLog 操作日志
-     * @throws Exception
      */
     public void getControllerMethodDescription(JoinPoint joinPoint, Log log, OperationLogDTO operationLog, Object jsonResult) throws Exception {
         // 设置action动作

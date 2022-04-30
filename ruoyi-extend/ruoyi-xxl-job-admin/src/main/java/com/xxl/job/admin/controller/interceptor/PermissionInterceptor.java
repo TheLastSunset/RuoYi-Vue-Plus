@@ -30,14 +30,14 @@ public class PermissionInterceptor implements AsyncHandlerInterceptor {
             return AsyncHandlerInterceptor.super.preHandle(request, response, handler);
         }
 
-        // if need login
+        // need login
         boolean needLogin = true;
-        boolean needAdminuser = false;
+        boolean needAdminUser = false;
         HandlerMethod method = (HandlerMethod) handler;
         PermissionLimit permission = method.getMethodAnnotation(PermissionLimit.class);
         if (permission != null) {
             needLogin = permission.limit();
-            needAdminuser = permission.adminuser();
+            needAdminUser = permission.adminUser();
         }
 
         if (needLogin) {
@@ -47,7 +47,7 @@ public class PermissionInterceptor implements AsyncHandlerInterceptor {
                 response.setHeader("location" , request.getContextPath() + "/toLogin");
                 return false;
             }
-            if (needAdminuser && loginUser.getRole() != 1) {
+            if (needAdminUser && loginUser.getRole() != 1) {
                 throw new RuntimeException(I18nUtil.getString("system_permission_limit"));
             }
             request.setAttribute(LoginService.LOGIN_IDENTITY_KEY, loginUser);

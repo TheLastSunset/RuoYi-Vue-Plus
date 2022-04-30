@@ -35,7 +35,7 @@ public class FilterConfig {
         registration.addUrlPatterns(StringUtils.split(xssProperties.getUrlPatterns(), ","));
         registration.setName("xssFilter");
         registration.setOrder(FilterRegistrationBean.HIGHEST_PRECEDENCE);
-        Map<String, String> initParameters = new HashMap<String, String>();
+        Map<String, String> initParameters = new HashMap<>();
         initParameters.put("excludes", xssProperties.getExcludes());
         registration.setInitParameters(initParameters);
         return registration;

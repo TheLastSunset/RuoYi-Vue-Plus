@@ -90,7 +90,7 @@ public class GlobalExceptionHandler {
     public R<Void> handleCannotFindDataSourceException(MyBatisSystemException e, HttpServletRequest request) {
         String requestURI = request.getRequestURI();
         String message = e.getMessage();
-        if (message.contains("CannotFindDataSourceException")) {
+        if (message != null && message.contains("CannotFindDataSourceException")) {
             log.error("请求地址'{}', 未找到数据源", requestURI);
             return R.fail("未找到数据源，请联系管理员确认");
         }
@@ -102,7 +102,7 @@ public class GlobalExceptionHandler {
      * 业务异常
      */
     @ExceptionHandler(ServiceException.class)
-    public R<Void> handleServiceException(ServiceException e, HttpServletRequest request) {
+    public R<Void> handleServiceException(ServiceException e) {
         log.error(e.getMessage(), e);
         Integer code = e.getCode();
         return ObjectUtil.isNotNull(code) ? R.fail(code, e.getMessage()) : R.fail(e.getMessage());
@@ -133,7 +133,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(BindException.class)
     public R<Void> handleBindException(BindException e) {
-        log.error(e.getMessage(), e);
+        log.debug(e.getMessage(), e);
         String message = e.getAllErrors().stream()
             .map(DefaultMessageSourceResolvable::getDefaultMessage)
             .collect(Collectors.joining(", "));
@@ -145,7 +145,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(ConstraintViolationException.class)
     public R<Void> constraintViolationException(ConstraintViolationException e) {
-        log.error(e.getMessage(), e);
+        log.debug(e.getMessage(), e);
         String message = e.getConstraintViolations().stream()
             .map(ConstraintViolation::getMessage)
             .collect(Collectors.joining(", "));
@@ -157,7 +157,7 @@ public class GlobalExceptionHandler {
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
     public R<Void> handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
-        log.error(e.getMessage(), e);
+        log.debug(e.getMessage(), e);
         String message = e.getBindingResult().getFieldError().getDefaultMessage();
         return R.fail(message);
     }
